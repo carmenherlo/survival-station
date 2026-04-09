@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# Environment
+.env
+
+# Conda environments
+env_base_requirements.yml
+environment.yml
+
+# Dependencies
+requirements.txt
+requirements.lock
+
+# Editor
+.vscode/
+
+# Internal — not for repo
+notes/
+
+# Vector store (generated, not source)
+# data/vectorstore/
+
+# Models (too large for git)
+data/models/
+
+# Map tiles (too large for git)
+# data/maps/
+
+# Offline content (too large for git)
+data/wiki/
+
+# OS
+.DS_Store

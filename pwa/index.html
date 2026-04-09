@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d5a27">
+  <link rel="manifest" href="/manifest.json">
+  <title>Survival Station</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: sans-serif;
+      background: #1a1a1a;
+      color: #f0f0f0;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: #7bc67a;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 32px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .service-btn {
+      display: block;
+      padding: 20px 12px;
+      background: #2a2a2a;
+      border: 1px solid #3a3a3a;
+      border-radius: 12px;
+      text-align: center;
+      text-decoration: none;
+      color: #f0f0f0;
+      font-size: 0.9rem;
+    }
+
+    .service-btn .icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+    .service-btn:active { background: #333; }
+
+    .rag-section {
+      background: #2a2a2a;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .rag-section h2 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: #7bc67a;
+    }
+
+    textarea {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      color: #f0f0f0;
+      padding: 10px;
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      background: #2d5a27;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:active { background: #3a7a33; }
+    button:disabled { background: #444; cursor: wait; }
+
+    .answer {
+      margin-top: 12px;
+      padding: 12px;
+      background: #1a1a1a;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      display: none;
+    }
+
+    .answer.visible { display: block; }
+  </style>
+</head>
+<body>
+
+  <h1>⚡ Survival Station</h1>
+  <p class="subtitle">Offline emergency assistant</p>
+
+  <div class="services">
+    <a class="service-btn" href="http://10.42.0.1:8080" target="_blank">
+      <span class="icon">🗺️</span>
+      Maps
+    </a>
+    <a class="service-btn" href="http://10.42.0.1:8888" target="_blank">
+      <span class="icon">📚</span>
+      Wiki
+    </a>
+    <a class="service-btn" href="http://10.42.0.1:8000/docs" target="_blank">
+      <span class="icon">🔧</span>
+      API
+    </a>
+    <a class="service-btn" href="#" target="_blank">
+      <span class="icon">💬</span>
+      Chat
+      <small style="display:block;color:#666;font-size:0.7rem">coming soon</small>
+    </a>
+  </div>
+
+  <div class="rag-section">
+    <h2>🤖 Ask the assistant</h2>
+    <textarea id="question" placeholder="How do I purify water without electricity?"></textarea>
+    <button id="askBtn" onclick="askQuestion()">Ask</button>
+    <div class="answer" id="answer"></div>
+  </div>
+
+  <script>
+    const API = '/api';
+    // const API = 'http://10.42.0.1:8000';
+
+    async function askQuestion() {
+      const question = document.getElementById('question').value.trim();
+      if (!question) return;
+
+      const btn = document.getElementById('askBtn');
+      const answerDiv = document.getElementById('answer');
+
+      btn.disabled = true;
+      btn.textContent = 'Thinking...';
+      answerDiv.classList.remove('visible');
+
+      try {
+        const response = await fetch(`${API}/query`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ question })
+        });
+        const data = await response.json();
+        answerDiv.textContent = data.answer;
+        answerDiv.classList.add('visible');
+      } catch (err) {
+        answerDiv.textContent = 'Error connecting to the assistant.';
+        answerDiv.classList.add('visible');
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Ask';
+    }
+  </script>
+
+  <script>
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+
+</body>
+</html>
