@@ -159,7 +159,7 @@
     </div>
 
     <textarea id="inputText" placeholder="Enter text to translate..."></textarea>
-    <button class="translate-btn" id="translateBtn" onclick="translate()">Translate</button>
+    <button class="translate-btn" id="translateBtn" onclick="runTranslate()">Translate</button>
 
     <p class="result-label" id="resultLabel" style="display:none">Translation</p>
     <div class="result" id="result"></div>
@@ -177,7 +177,7 @@
       tgt.value = tmp;
     }
 
-    async function translate() {
+    async function runTranslate() {
       const text = document.getElementById('inputText').value.trim();
       if (!text) return;
 
