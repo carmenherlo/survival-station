@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2d5a27">
+  <link rel="manifest" href="/manifest.json">
+  <title>Translator — Survival Station</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: sans-serif;
+      background: #1a1a1a;
+      color: #f0f0f0;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #888;
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    .back-btn:active { color: #f0f0f0; }
+
+    h1 {
+      text-align: center;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: #7bc67a;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 32px;
+    }
+
+    .translator-section {
+      background: #2a2a2a;
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .lang-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    select {
+      flex: 1;
+      background: #1a1a1a;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      color: #f0f0f0;
+      padding: 10px;
+      font-size: 0.9rem;
+      appearance: none;
+      text-align: center;
+    }
+
+    .swap-btn {
+      background: none;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      color: #7bc67a;
+      font-size: 1.2rem;
+      padding: 8px 12px;
+      cursor: pointer;
+      width: auto;
+      margin-top: 0;
+    }
+
+    .swap-btn:active { background: #333; }
+
+    textarea {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #3a3a3a;
+      border-radius: 8px;
+      color: #f0f0f0;
+      padding: 10px;
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .translate-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      background: #2d5a27;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .translate-btn:active { background: #3a7a33; }
+    .translate-btn:disabled { background: #444; cursor: wait; }
+
+    .result-label {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 16px;
+      margin-bottom: 6px;
+    }
+
+    .result {
+      padding: 12px;
+      background: #1a1a1a;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      min-height: 60px;
+      display: none;
+      border-left: 3px solid #7bc67a;
+    }
+
+    .result.visible { display: block; }
+
+    .error {
+      border-left-color: #c67a7a;
+      color: #c67a7a;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-btn" href="/">← Back</a>
+
+  <h1>🌐 Translator</h1>
+  <p class="subtitle">Offline translation — es / en / de</p>
+
+  <div class="translator-section">
+
+    <div class="lang-selector">
+      <select id="sourceLang">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="de">Deutsch</option>
+      </select>
+      <button class="swap-btn" onclick="swapLangs()">⇄</button>
+      <select id="targetLang">
+        <option value="es">Español</option>
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+      </select>
+    </div>
+
+    <textarea id="inputText" placeholder="Enter text to translate..."></textarea>
+    <button class="translate-btn" id="translateBtn" onclick="translate()">Translate</button>
+
+    <p class="result-label" id="resultLabel" style="display:none">Translation</p>
+    <div class="result" id="result"></div>
+
+  </div>
+
+  <script src="/config.js"></script>
+  <script>
+
+    function swapLangs() {
+      const src = document.getElementById('sourceLang');
+      const tgt = document.getElementById('targetLang');
+      const tmp = src.value;
+      src.value = tgt.value;
+      tgt.value = tmp;
+    }
+
+    async function translate() {
+      const text = document.getElementById('inputText').value.trim();
+      if (!text) return;
+
+      const source = document.getElementById('sourceLang').value;
+      const target = document.getElementById('targetLang').value;
+
+      if (source === target) {
+        showResult('Source and target language are the same.', true);
+        return;
+      }
+
+      const btn = document.getElementById('translateBtn');
+      btn.disabled = true;
+      btn.textContent = 'Translating...';
+
+      try {
+        const response = await fetch(`${CONFIG.TRANSLATOR_API}/translate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ q: text, source, target, format: 'text' })
+        });
+        const data = await response.json();
+        showResult(data.translatedText);
+      } catch (err) {
+        showResult('Error connecting to the translator.', true);
+      }
+
+      btn.disabled = false;
+      btn.textContent = 'Translate';
+    }
+
+    function showResult(text, isError = false) {
+      const result = document.getElementById('result');
+      const label = document.getElementById('resultLabel');
+      result.textContent = text;
+      result.className = 'result visible' + (isError ? ' error' : '');
+      label.style.display = 'block';
+    }
+  </script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  </script>
+
+</body>
+</html>
