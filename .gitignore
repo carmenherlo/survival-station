@@ -32,6 +32,7 @@ data/models/
 
 # Offline content (too large for git)
 data/wiki/
+data/translate/
 
 # OS
 .DS_Store

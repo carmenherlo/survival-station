@@ -48,6 +48,20 @@ services:
     entrypoint: [ "sh", "-c", "kiwix-serve --port 8888 /data/*.zim" ]
     restart: unless-stopped
 
+  # Offline translator - LibreTranslate with es/en/de models
+  libretranslate:
+    image: libretranslate/libretranslate:latest
+    container_name: libretranslate
+    ports:
+      - "5000:5000"
+    environment:
+      - LT_LOAD_ONLY=es,en,de
+      - LT_UPDATE_MODELS=false
+      - LT_OFFLINE=true
+    volumes:
+      - ./data/translate:/home/libretranslate/.local/share/argos-translate
+    restart: unless-stopped
+    
   # PWA - served via nginx
   pwa:
     image: nginx:alpine
