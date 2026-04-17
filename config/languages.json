@@ -1,0 +1,21 @@
+{
+  "load_only": ["es", "en", "de", "fr", "uk", "ru"],
+  "packages": [
+    "translate-es_en",
+    "translate-en_es",
+    "translate-de_en",
+    "translate-en_de",
+    "translate-fr_en",
+    "translate-en_fr",
+    "translate-uk_en",
+    "translate-en_uk",
+    "translate-ru_en",
+    "translate-en_ru",
+    "translate-it_en",
+    "translate-en_it",
+    "translate-ar_en",
+    "translate-en_ar",
+    "translate-tr_en",
+    "translate-en_tr"
+  ]
+}

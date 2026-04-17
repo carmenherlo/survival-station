@@ -146,15 +146,21 @@
 
     <div class="lang-selector">
       <select id="sourceLang">
-        <option value="en">English</option>
+        <!-- <option value="en">English</option>
         <option value="es">Español</option>
         <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="uk">Українська</option>
+        <option value="ru">Русский</option> -->
       </select>
       <button class="swap-btn" onclick="swapLangs()">⇄</button>
       <select id="targetLang">
+        <!-- <option value="en">English</option>
         <option value="es">Español</option>
-        <option value="en">English</option>
         <option value="de">Deutsch</option>
+        <option value="fr">Français</option>
+        <option value="uk">Українська</option>
+        <option value="ru">Русский</option> -->
       </select>
     </div>
 
@@ -208,6 +214,32 @@
       btn.disabled = false;
       btn.textContent = 'Translate';
     }
+
+    async function loadLanguages() {
+      try {
+        const response = await fetch(`${CONFIG.TRANSLATOR_API}/languages`);
+        const languages = await response.json();
+
+        const sourceSel = document.getElementById('sourceLang');
+        const targetSel = document.getElementById('targetLang');
+
+        languages.forEach(lang => {
+          sourceSel.innerHTML += `<option value="${lang.code}">${lang.name}</option>`;
+          targetSel.innerHTML += `<option value="${lang.code}">${lang.name}</option>`;
+        });
+
+        // Default: source=en, target=es
+        sourceSel.value = 'en';
+        targetSel.value = 'es';
+
+      } catch (err) {
+        console.error('Could not load languages:', err);
+      }
+    }
+
+    // Load languages on page load
+    loadLanguages();
+
 
     function showResult(text, isError = false) {
       const result = document.getElementById('result');
