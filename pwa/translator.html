@@ -140,7 +140,7 @@
   <a class="back-btn" href="/">← Back</a>
 
   <h1>🌐 Translator</h1>
-  <p class="subtitle">Offline translation — es / en / de</p>
+  <p class="subtitle">Offline translation — 9 languages</p>
 
   <div class="translator-section">
 
@@ -210,8 +210,9 @@
         const targetSel = document.getElementById('targetLang');
 
         languages.forEach(lang => {
-          sourceSel.innerHTML += `<option value="${lang.code}">${lang.name}</option>`;
-          targetSel.innerHTML += `<option value="${lang.code}">${lang.name}</option>`;
+          const name = lang.code === 'uk' ? 'Ukrainian' : lang.name;
+          sourceSel.innerHTML += `<option value="${lang.code}">${name}</option>`;
+          targetSel.innerHTML += `<option value="${lang.code}">${name}</option>`;
         });
 
         // Default: source=en, target=es
