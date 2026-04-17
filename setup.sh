@@ -384,6 +384,27 @@ else
 fi
 
 # =============================================================================
+# STEP 8c — Download translation models (LibreTranslate / Argos)
+# =============================================================================
+sep; info "STEP 8c · Downloading translation language models"
+
+mkdir -p "${COMPOSE_DIR}/data/translate"
+chown -R 1032:1032 "${COMPOSE_DIR}/data/translate"
+
+PACKAGES=$(jq -r '.packages[]' "${COMPOSE_DIR}/config/languages.json")
+
+for pkg in $PACKAGES; do
+  info "  Installing $pkg..."
+  docker run --rm \
+    -v "${COMPOSE_DIR}/data/translate:/home/libretranslate/.local/share/argos-translate" \
+    --entrypoint /app/venv/bin/argospm \
+    libretranslate/libretranslate:latest \
+    install "$pkg"
+done
+
+log "Translation models downloaded"
+
+# =============================================================================
 # STEP 9 — Run service checks
 # =============================================================================
 sep; info "STEP 9 · Running service checks"

@@ -23,11 +23,12 @@ Most AI and knowledge tools assume a reliable internet connection. Survival Stat
                         │  ┌──────────────────────────────────┐   │
                         │  │         Docker Compose           │   │
                         │  │                                  │   │
-                        │  │  ollama      :11434              │   │
-                        │  │  rag-api     :8000               │   │
-                        │  │  tileserver  :8080               │   │
-                        │  │  kiwix       :8888               │   │
-                        │  │  pwa (nginx) :80                 │   │
+                        │  │  ollama         :11434           │   │
+                        │  │  rag-api        :8000            │   │
+                        │  │  tileserver     :8080            │   │
+                        │  │  kiwix          :8888            │   │
+                        │  │  libretranslate :5000            │   │
+                        │  │  pwa (nginx)    :80              │   │
                         │  └──────────────────────────────────┘   │
                         │                                         │
                         │  wlp2s0 → hotspot "Survival-Net"        │
@@ -68,6 +69,7 @@ Once connected to the `Survival-Net` hotspot, open a browser and navigate to `ht
 | Ask a survival question (RAG) | `http://10.42.0.1` → main interface |
 | Browse offline maps | `http://10.42.0.1:8080` |
 | Search Wikipedia offline | `http://10.42.0.1:8888` |
+| Translate text offline | `http://10.42.0.1` → Translator |
 | Check LLM status | `http://10.42.0.1:11434` |
 
 The PWA can be installed on any mobile device directly from the browser (Add to Home Screen).
@@ -127,6 +129,7 @@ The knowledge base is intentionally minimal. The architecture is designed to sca
 | **RAG API** | 8000 | FastAPI service — FAISS vector index + Ollama for semantic search and retrieval-augmented generation |
 | **Tileserver** | 8080 | Offline vector tile maps via `maptiler/tileserver-gl` |
 | **Kiwix** | 8888 | Wikipedia offline (ZIM format) |
+| **LibreTranslate** | 5000 | Offline translation — es, en, de, fr, uk, ru, it, ar, tr |
 | **PWA** | 80 | Progressive Web App frontend served by nginx, accessible from any browser |
 
 ---
@@ -146,6 +149,7 @@ The hotspot is managed by NetworkManager and configured to autostart on boot wit
 - **API**: FastAPI (Python)
 - **Maps**: maptiler/tileserver-gl + MBTiles
 - **Offline content**: Kiwix
+- **Translation**: [LibreTranslate](https://libretranslate.com) + Argos Translate — offline NMT models
 - **Frontend**: nginx + PWA (installable from any browser)
 - **Network**: NetworkManager hotspot on wlp2s0
 
@@ -170,6 +174,7 @@ Functional. Validated headless cold-start without ethernet.
 
 **Core**
 - [x] Fix boot ordering — Docker after hotspot, reliable headless startup without ethernet
+- [x] Offline translator — LibreTranslate with 9 language pairs (es, en, de, fr, uk, ru, it, ar, tr)
 - [ ] Multi-user chat — local messaging between connected devices, no internet required
 - [ ] Field validation — response quality from LLM + RAG on real survival queries, UX fluidity from hotspot-connected mobile, actual power consumption vs estimates, and behaviour under concurrent users
 
