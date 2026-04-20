@@ -13,6 +13,7 @@ services:
   # RAG API - FastAPI service with FAISS vector index
   rag-api:
     image: survival-station-rag:latest
+    build: .
     container_name: rag-api
     ports:
       - "8000:8000"

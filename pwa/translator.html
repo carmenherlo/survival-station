@@ -133,6 +133,80 @@
       border-left-color: #c67a7a;
       color: #c67a7a;
     }
+
+    /* OCR section */
+    .ocr-section {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding: 10px;
+      background: #1f1f1f;
+      border: 1px dashed #3a3a3a;
+      border-radius: 8px;
+    }
+
+    .ocr-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #3a3a3a;
+      color: #f0f0f0;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .ocr-btn:active { background: #4a4a4a; }
+    .ocr-btn:disabled { opacity: 0.5; cursor: wait; }
+
+    .ocr-lang-select {
+      flex: 0 1 auto;
+      width: auto;
+      min-width: 110px;
+      padding: 8px;
+      font-size: 0.85rem;
+    }
+
+    .ocr-checkbox-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .ocr-checkbox-label input {
+      accent-color: #7bc67a;
+    }
+
+    .ocr-status {
+      width: 100%;
+      font-size: 0.8rem;
+      color: #888;
+      min-height: 1em;
+    }
+
+    .ocr-status.error { color: #c67a7a; }
+
+    .ocr-preview {
+      display: none;
+      width: 100%;
+      max-height: 180px;
+      object-fit: contain;
+      margin-top: 8px;
+      border-radius: 6px;
+      border: 1px solid #3a3a3a;
+      background: #0f0f0f;
+    }
+
+    .ocr-preview.visible {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -150,6 +224,31 @@
       <select id="targetLang"></select>
     </div>
 
+    <!-- OCR: extract text from an image -->
+    <div class="ocr-section">
+      <label class="ocr-btn" for="ocrInput">
+        📷 From image
+      </label>
+      <input
+        type="file"
+        id="ocrInput"
+        accept="image/*"
+        capture="environment"
+        style="display:none"
+      />
+      <select id="ocrLang" class="ocr-lang-select">
+        <option value="eng">English</option>
+        <option value="spa">Spanish</option>
+        <option value="deu">German</option>
+      </select>
+      <label class="ocr-checkbox-label">
+        <input type="checkbox" id="ocrUseAsSource" checked>
+        Use as source
+      </label>
+      <div class="ocr-status" id="ocrStatus"></div>
+      <img id="ocrPreview" class="ocr-preview" alt="Uploaded image preview" />
+    </div>
+
     <textarea id="inputText" placeholder="Enter text to translate..."></textarea>
     <button class="translate-btn" id="translateBtn" onclick="runTranslate()">Translate</button>
 
@@ -160,6 +259,9 @@
 
   <script src="/config.js"></script>
   <script>
+
+    // OCR -> LibreTranslate language code mapping (matches backend)
+    const OCR_TO_LT = { eng: 'en', spa: 'es', deu: 'de' };
 
     function swapLangs() {
       const src = document.getElementById('sourceLang');
@@ -227,7 +329,6 @@
     // Load languages on page load
     loadLanguages();
 
-
     function showResult(text, isError = false) {
       const result = document.getElementById('result');
       const label = document.getElementById('resultLabel');
@@ -235,6 +336,82 @@
       result.className = 'result visible' + (isError ? ' error' : '');
       label.style.display = 'block';
     }
+
+    // --- OCR ---
+    function setOcrStatus(msg, isError = false) {
+      const el = document.getElementById('ocrStatus');
+      el.textContent = msg;
+      el.className = 'ocr-status' + (isError ? ' error' : '');
+    }
+
+    async function handleImageUpload(file) {
+      const ocrLang = document.getElementById('ocrLang').value;
+      const useAsSource = document.getElementById('ocrUseAsSource').checked;
+      const ocrBtn = document.querySelector('label[for="ocrInput"]');
+
+      ocrBtn.style.pointerEvents = 'none';
+      ocrBtn.style.opacity = '0.5';
+      setOcrStatus('Extracting text…');
+
+      // Show preview of the uploaded image
+      const preview = document.getElementById('ocrPreview');
+      preview.src = URL.createObjectURL(file);
+      preview.classList.add('visible');
+      
+      try {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        const res = await fetch(`${CONFIG.RAG_API}/ocr?lang=${ocrLang}`, {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (!res.ok) {
+          const errData = await res.json().catch(() => ({}));
+          throw new Error(errData.detail || `OCR failed (${res.status})`);
+        }
+
+        const data = await res.json();
+
+        if (!data.text) {
+          setOcrStatus('No text detected. Try another photo.', true);
+          return;
+        }
+
+        // Fill the textarea
+        document.getElementById('inputText').value = data.text;
+
+        // Optionally align the translator's source language
+        if (useAsSource) {
+          const ltCode = OCR_TO_LT[ocrLang];
+          const sourceSel = document.getElementById('sourceLang');
+          if (ltCode && [...sourceSel.options].some(o => o.value === ltCode)) {
+            sourceSel.value = ltCode;
+          }
+        }
+
+        setOcrStatus(`Extracted ${data.char_count} chars. Translating…`);
+
+        // Auto-translate
+        await runTranslate();
+        setOcrStatus(`Extracted ${data.char_count} chars.`);
+
+      } catch (err) {
+        setOcrStatus(err.message || 'OCR error.', true);
+      } finally {
+        ocrBtn.style.pointerEvents = '';
+        ocrBtn.style.opacity = '';
+        // Allow selecting the same file again
+        document.getElementById('ocrInput').value = '';
+      }
+    }
+
+    document.getElementById('ocrInput').addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) handleImageUpload(file);
+    });
+
   </script>
 
   <script>
