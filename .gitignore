@@ -7,13 +7,9 @@ __pycache__/
 # Environment
 .env
 
-# Conda environments
+# Conda environments (not needed — everything runs in Docker)
 env_base_requirements.yml
 environment.yml
-
-# Dependencies
-requirements.txt
-requirements.lock
 
 # Editor
 .vscode/
@@ -21,14 +17,8 @@ requirements.lock
 # Internal — not for repo
 notes/
 
-# Vector store (generated, not source)
-# data/vectorstore/
-
 # Models (too large for git)
 data/models/
-
-# Map tiles (too large for git)
-# data/maps/
 
 # Offline content (too large for git)
 data/wiki/
