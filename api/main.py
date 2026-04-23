@@ -36,6 +36,9 @@ OCR_TO_LT_LANG = {
     "eng": "en",
     "spa": "es",
     "deu": "de",
+    "fra": "fr",
+    "ukr": "uk",
+    "tur": "tr",
 }
 MAX_IMAGE_BYTES = 10 * 1024 * 1024  # 10 MB
 UPSCALE_THRESHOLD = 1500            # px: if longest side < this, upscale x2

@@ -240,6 +240,9 @@
         <option value="eng">English</option>
         <option value="spa">Spanish</option>
         <option value="deu">German</option>
+        <option value="fra">French</option>
+        <option value="ukr">Ukrainian</option>
+        <option value="tur">Turkish</option>
       </select>
       <label class="ocr-checkbox-label">
         <input type="checkbox" id="ocrUseAsSource" checked>
@@ -261,7 +264,14 @@
   <script>
 
     // OCR -> LibreTranslate language code mapping (matches backend)
-    const OCR_TO_LT = { eng: 'en', spa: 'es', deu: 'de' };
+    const OCR_TO_LT = {
+      eng: 'en',
+      spa: 'es',
+      deu: 'de',
+      fra: 'fr',
+      ukr: 'uk',
+      tur: 'tr'
+    };
 
     function swapLangs() {
       const src = document.getElementById('sourceLang');
