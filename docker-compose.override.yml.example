@@ -1,0 +1,84 @@
+services:
+
+  # LLM server - serves phi3:mini and nomic-embed-text
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    restart: unless-stopped
+
+  # RAG API - FastAPI service with FAISS vector index
+  rag-api:
+    image: survival-station-rag:latest
+    build: .
+    container_name: rag-api
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_URL=http://ollama:11434
+      - LLM_MODEL=phi3:mini
+      - EMBED_MODEL=nomic-embed-text
+      - VECTOR_DIR=/data/vectorstore
+    volumes:
+      - ./data:/data        # vectorstore lives on host, not inside image
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+  # Offline maps server
+  tileserver:
+    image: maptiler/tileserver-gl
+    container_name: tileserver
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/maps:/data
+    restart: unless-stopped
+
+  # Offline wiki server
+  kiwix:
+    image: ghcr.io/kiwix/kiwix-serve:latest
+    container_name: kiwix
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./data/wiki:/data
+    entrypoint: [ "sh", "-c", "kiwix-serve --port 8888 /data/*.zim" ]
+    restart: unless-stopped
+
+  # Offline translator - LibreTranslate with es/en/de models
+  libretranslate:
+      image: libretranslate/libretranslate:latest
+      container_name: libretranslate
+      ports:
+        - "5000:5000"
+      environment:
+        - LT_LOAD_ONLY=es,en,de,fr,uk,ru
+        - LT_UPDATE_MODELS=false
+        - LT_OFFLINE=true
+      volumes:
+        - ./data/translate:/home/libretranslate/.local/share/argos-translate
+      restart: unless-stopped
+    
+  # PWA - served via nginx
+  pwa:
+    image: nginx:alpine
+    container_name: pwa
+    ports:
+      - "80:80"
+    volumes:
+      - ./pwa:/usr/share/nginx/html
+      - ./pwa/nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: unless-stopped
+    
+volumes:
+  ollama_data:

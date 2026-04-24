@@ -24,5 +24,8 @@ data/models/
 data/wiki/
 data/translate/
 
+# Docker compose override (use GPUs locally, but not in production)
+docker-compose.override.yml
+
 # OS
 .DS_Store
