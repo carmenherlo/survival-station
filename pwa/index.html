@@ -92,6 +92,45 @@
     button:active { background: #3a7a33; }
     button:disabled { background: #444; cursor: wait; }
 
+    /* Button row: camera | file | ask */
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .btn-row button {
+      margin-top: 0;
+    }
+    .btn-row .icon-btn {
+      width: auto;
+      padding: 12px 14px;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .btn-row .ask-btn {
+      flex: 1;
+    }
+
+    /* Image preview */
+    .img-preview {
+      display: none;
+      margin-top: 10px;
+    }
+    .img-preview img {
+      display: block;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid #3a3a3a;
+    }
+    .img-preview .remove-btn {
+      width: auto;
+      margin-top: 6px;
+      padding: 5px 14px;
+      font-size: 0.8rem;
+      background: #5a2727;
+    }
+    .img-preview .remove-btn:active { background: #7a3333; }
+
     .answer {
       margin-top: 12px;
       padding: 12px;
@@ -101,8 +140,22 @@
       line-height: 1.5;
       display: none;
     }
-
     .answer.visible { display: block; }
+
+    /* Kiwix suggestion link */
+    .kiwix-suggest {
+      display: none;
+      margin-top: 8px;
+      padding: 10px 12px;
+      background: #1a2a1a;
+      border: 1px solid #2d5a27;
+      border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    .kiwix-suggest a {
+      color: #7bc67a;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -123,48 +176,114 @@
       <span class="icon">🔧</span>
       API
     </a>
-      <a class="service-btn" href="/translator.html">
+    <a class="service-btn" href="/translator.html">
       <span class="icon">🌐</span>
       Translator
     </a>
-    <!-- <a class="service-btn" href="#" target="_blank">
-      <span class="icon">💬</span>
-      Chat
-      <small style="display:block;color:#666;font-size:0.7rem">coming soon</small>
-    </a> -->
   </div>
 
   <div class="rag-section">
     <h2>🤖 Ask the assistant</h2>
     <textarea id="question" placeholder="How do I purify water without electricity?"></textarea>
-    <button id="askBtn" onclick="askQuestion()">Ask</button>
+
+    <!-- Image preview (hidden until file selected) -->
+    <div class="img-preview" id="imgPreview">
+      <img id="previewImg" src="" alt="Selected image">
+      <button class="remove-btn" onclick="clearImage()">✕ Remove image</button>
+    </div>
+
+    <!-- Hidden file inputs -->
+    <input type="file" id="cameraInput" accept="image/*" capture="environment"
+           style="display:none" onchange="handleImageSelect(this)">
+    <input type="file" id="fileInput" accept="image/*"
+           style="display:none" onchange="handleImageSelect(this)">
+
+    <div class="btn-row">
+      <button class="icon-btn" title="Take photo" onclick="document.getElementById('cameraInput').click()">📷</button>
+      <button class="icon-btn" title="Choose file" onclick="document.getElementById('fileInput').click()">📁</button>
+      <button class="ask-btn" id="askBtn" onclick="askQuestion()">Ask</button>
+    </div>
+
     <div class="answer" id="answer"></div>
+    <div class="kiwix-suggest" id="kiwixSuggest">
+      🔍 Low confidence — <a id="kiwixLink" href="#" target="_blank" rel="noopener">Search Wikipedia for this</a>
+    </div>
   </div>
 
   <script src="/config.js"></script>
   <script>
+    let selectedImageFile = null;
+
+    function handleImageSelect(input) {
+      if (!input.files || !input.files[0]) return;
+      selectedImageFile = input.files[0];
+      const url = URL.createObjectURL(selectedImageFile);
+      document.getElementById('previewImg').src = url;
+      document.getElementById('imgPreview').style.display = 'block';
+    }
+
+    function clearImage() {
+      selectedImageFile = null;
+      document.getElementById('imgPreview').style.display = 'none';
+      document.getElementById('previewImg').src = '';
+      document.getElementById('cameraInput').value = '';
+      document.getElementById('fileInput').value = '';
+    }
+
     async function askQuestion() {
       const question = document.getElementById('question').value.trim();
-      if (!question) return;
+      if (!question && !selectedImageFile) return;
 
       const btn = document.getElementById('askBtn');
       const answerDiv = document.getElementById('answer');
+      const kiwixDiv = document.getElementById('kiwixSuggest');
 
       btn.disabled = true;
       btn.textContent = 'Thinking...';
       answerDiv.classList.remove('visible');
+      kiwixDiv.style.display = 'none';
 
       try {
-        const response = await fetch(`${CONFIG.RAG_API}/query`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ question })
-        });
-        const data = await response.json();
-        answerDiv.textContent = data.answer;
+        let answer;
+
+        if (selectedImageFile) {
+          const formData = new FormData();
+          formData.append('file', selectedImageFile);
+          if (question) formData.append('question', question);
+
+          const response = await fetch(`${CONFIG.RAG_API}/query/image`, {
+            method: 'POST',
+            body: formData,
+          });
+          if (!response.ok) {
+            const err = await response.json().catch(() => ({}));
+            throw new Error(err.detail || `HTTP ${response.status}`);
+          }
+          const data = await response.json();
+          answer = data.answer;
+
+          if (data.kiwix_search_url) {
+            document.getElementById('kiwixLink').href = data.kiwix_search_url;
+            kiwixDiv.style.display = 'block';
+          }
+        } else {
+          const response = await fetch(`${CONFIG.RAG_API}/query`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question }),
+          });
+          if (!response.ok) {
+            const err = await response.json().catch(() => ({}));
+            throw new Error(err.detail || `HTTP ${response.status}`);
+          }
+          const data = await response.json();
+          answer = data.answer;
+        }
+
+        answerDiv.textContent = answer;
         answerDiv.classList.add('visible');
       } catch (err) {
-        answerDiv.textContent = 'Error connecting to the assistant.';
+        answerDiv.textContent = `Error: ${err.message || 'Could not connect to the assistant.'}`;
         answerDiv.classList.add('visible');
       }
 
@@ -174,7 +293,6 @@
   </script>
 
   <script>
-    // Register service worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
     }

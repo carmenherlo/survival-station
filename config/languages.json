@@ -1,5 +1,5 @@
 {
-  "load_only": ["es", "en", "de", "fr", "uk", "ru"],
+  "load_only": ["es", "en", "de", "fr", "uk", "ru", "it", "ar", "tr"],
   "packages": [
     "translate-es_en",
     "translate-en_es",
