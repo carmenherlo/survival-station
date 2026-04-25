@@ -11,7 +11,7 @@ VECTOR_DIR = "data/vectorstore"
 # Embedding model via Ollama - no torch, no CUDA needed
 Settings.embed_model = OllamaEmbedding(
     model_name="nomic-embed-text",
-    base_url="http://localhost:11434"
+    base_url=os.environ.get("OLLAMA_URL", "http://localhost:11434")
 )
 Settings.llm = None
 

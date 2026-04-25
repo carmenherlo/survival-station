@@ -1,0 +1,904 @@
+# Essential Medicines Reference
+
+A practical reference of common medications based on the WHO Model List of Essential Medicines, focused on medications a traveler or person in a remote situation is likely to encounter on packaging, leaflets, or signage. Trade names are included to aid recognition of foreign packaging.
+
+This document is for orientation only. It is not a substitute for medical advice. When in doubt, consult a doctor.
+
+---
+
+## PARACETAMOL (ACETAMINOPHEN)
+**Trade names:** Tylenol, Panadol, Doliprane, Efferalgan, Ben-u-ron, Termalgin, Gelocatil, Apiretal, Tachipirina, Paramol, Calpol
+**Class:** Analgesic, antipyretic (pain reliever, fever reducer)
+**Used for:** Mild to moderate pain (headache, muscle pain, toothache), fever
+**Adult dose:** 500–1000 mg every 4–6 hours, maximum 4 g per day
+**Avoid if:** Severe liver disease, regular alcohol consumption
+**Notes:** Overdose causes severe liver damage. Do not exceed 4 g/day. Check labels of cold/flu medicines — many already contain paracetamol.
+
+In emergencies, paracetamol is the safest first-line option for pain and fever in most adults and children. It does not reduce inflammation. Combining it with alcohol or with other paracetamol-containing products is the most common cause of accidental liver injury.
+
+---
+
+## IBUPROFEN
+**Trade names:** Advil, Brufen, Nurofen, Motrin, Espidifen, Neobrufen, Algidrin, Dalsy, Junifen
+**Class:** NSAID (non-steroidal anti-inflammatory drug)
+**Used for:** Pain, inflammation, fever, menstrual cramps, muscle/joint pain
+**Adult dose:** 200–400 mg every 4–6 hours, maximum 1200 mg per day without prescription
+**Avoid if:** Stomach ulcers, kidney disease, heart failure, third trimester of pregnancy, asthma triggered by NSAIDs
+**Notes:** Take with food to protect stomach. Do not combine with other NSAIDs.
+
+Ibuprofen treats both pain and inflammation, making it useful for sprains, muscular injuries, and dental pain. Avoid in dehydrated patients or those with kidney problems, as NSAIDs reduce kidney blood flow.
+
+---
+
+## DEXKETOPROFEN
+**Trade names:** Arveles, Enantyum, Keral, Quiralam
+**Class:** NSAID (potent variant of ketoprofen)
+**Used for:** Moderate to severe acute pain (post-surgical, dental, musculoskeletal, menstrual)
+**Adult dose:** 12.5–25 mg every 4–6 hours, maximum 75 mg per day
+**Avoid if:** Stomach ulcers, severe kidney or liver disease, third trimester of pregnancy, history of GI bleeding
+**Notes:** Stronger than ibuprofen. Often prescribed in Spain, Italy, Turkey under brand Arveles. Short course only (3–5 days).
+
+Dexketoprofen is the active S-enantiomer of ketoprofen, giving stronger analgesic effect at lower doses. Common in Mediterranean and Eastern European countries. The brand "Arveles" with the active ingredient "deksketoprofen trometamol" is widely sold in Turkey.
+
+---
+
+## NAPROXEN
+**Trade names:** Aleve, Naprosyn, Antalgin, Momendol, Apranax
+**Class:** NSAID (long-acting)
+**Used for:** Arthritis, gout flares, menstrual pain, muscle pain, prolonged inflammation
+**Adult dose:** 250–500 mg twice daily, maximum 1000 mg per day
+**Avoid if:** Stomach ulcers, kidney disease, heart conditions, third trimester of pregnancy
+**Notes:** Lasts longer than ibuprofen (8–12 hours). Take with food.
+
+Naproxen is preferred over ibuprofen when sustained anti-inflammatory effect is needed, such as in arthritis or recovery from injury. Higher cardiovascular safety profile than other NSAIDs in some studies.
+
+---
+
+## ASPIRIN (ACETYLSALICYLIC ACID)
+**Trade names:** Bayer, Aspirina, ASS, Adiro (low-dose), Disprin
+**Class:** NSAID, antiplatelet
+**Used for:** Pain, fever, inflammation. Low-dose (75–100 mg): heart attack and stroke prevention
+**Adult dose:** Pain: 300–900 mg every 4 hours. Antiplatelet: 75–100 mg daily
+**Avoid if:** Children under 16 (Reye's syndrome risk), bleeding disorders, ulcers, third trimester of pregnancy
+**Notes:** During suspected heart attack, chewing 300 mg can be life-saving. Never give aspirin to a child with a viral infection.
+
+Aspirin is the only over-the-counter medication that can interrupt a heart attack in progress. If someone over 40 has chest pain consistent with cardiac origin and is conscious and not allergic, chewing a 300 mg aspirin while waiting for help is standard first aid.
+
+---
+
+## METAMIZOLE (DIPYRONE)
+**Trade names:** Nolotil, Novalgin, Buscapina compositum, Algocalmin
+**Class:** Analgesic, antipyretic
+**Used for:** Severe acute pain, post-surgical pain, high fever resistant to paracetamol, renal colic
+**Adult dose:** 500–1000 mg every 6–8 hours
+**Avoid if:** Pregnancy, blood disorders, allergy to NSAIDs/pyrazolones
+**Notes:** Banned in some countries (USA, UK, Sweden) due to rare risk of agranulocytosis. Common in Spain, Germany, Eastern Europe, Latin America.
+
+Metamizole is highly effective for visceral pain (kidney stones, intense colic) where NSAIDs are insufficient. The agranulocytosis risk is rare but serious — any unexplained sore throat or fever after starting metamizole requires immediate medical attention.
+
+---
+
+## TRAMADOL
+**Trade names:** Ultram, Adolonta, Zaldiar (with paracetamol), Contramal
+**Class:** Opioid analgesic (weak)
+**Used for:** Moderate to severe pain when NSAIDs/paracetamol are insufficient
+**Adult dose:** 50–100 mg every 4–6 hours, maximum 400 mg per day
+**Avoid if:** Seizure history, MAO inhibitor use, severe respiratory disease, alcohol intoxication
+**Notes:** Causes dependence and withdrawal. Lowers seizure threshold. Causes nausea, dizziness, constipation.
+
+Tramadol is a controlled substance in many countries. Its dual mechanism (weak opioid + serotonin/noradrenaline action) makes it risky in combination with antidepressants — serotonin syndrome can result. Only for short-term use.
+
+---
+
+## CODEINE
+**Trade names:** Codeisan, often combined with paracetamol (Co-codamol, Algidol)
+**Class:** Opioid analgesic
+**Used for:** Moderate pain, dry cough suppressant
+**Adult dose:** 30–60 mg every 4–6 hours
+**Avoid if:** Children under 12, breastfeeding, respiratory disease, after tonsillectomy in children
+**Notes:** Causes constipation, drowsiness. Some people metabolize codeine very rapidly with risk of overdose.
+
+Codeine is converted to morphine in the liver. Variability between individuals is high — some get strong relief, others very little. Often combined with paracetamol for synergy (e.g., Algidol, Co-codamol).
+
+---
+
+## MORPHINE
+**Trade names:** MS Contin, Sevredol, Oramorph, Skenan
+**Class:** Strong opioid analgesic
+**Used for:** Severe pain (cancer, post-surgical, trauma), cardiac pulmonary edema
+**Adult dose:** Variable; 5–10 mg subcutaneous or oral immediate-release
+**Avoid if:** Severe respiratory depression, intestinal obstruction, head injury (without monitoring)
+**Notes:** Causes dependence, respiratory depression, constipation. Strict prescription control.
+
+Morphine is a controlled substance in nearly all countries. In emergency settings, it remains the gold-standard for severe acute pain. Naloxone reverses opioid overdose.
+
+---
+
+## AMOXICILLIN
+**Trade names:** Amoxil, Augmentin (with clavulanic acid), Clamoxyl, Hiconcil
+**Class:** Penicillin antibiotic
+**Used for:** Respiratory infections, ear infections, urinary tract infections, dental infections, H. pylori
+**Adult dose:** 500 mg every 8 hours, or 875 mg every 12 hours, for 5–10 days
+**Avoid if:** Penicillin allergy
+**Notes:** Most common cause of antibiotic allergy. Take full course even if feeling better. Causes diarrhea in some patients.
+
+Amoxicillin is the most prescribed antibiotic worldwide. Augmentin (amoxicillin + clavulanic acid) covers more resistant bacteria. Penicillin allergies are sometimes confused with viral rashes — confirm with doctor before labeling someone "allergic".
+
+---
+
+## AZITHROMYCIN
+**Trade names:** Zithromax, Zitromax, Sumamed, Zmax
+**Class:** Macrolide antibiotic
+**Used for:** Respiratory infections, atypical pneumonia, traveler's diarrhea, sexually transmitted infections (chlamydia)
+**Adult dose:** 500 mg once daily for 3 days, or 1 g single dose for chlamydia
+**Avoid if:** Heart rhythm problems (QT prolongation), liver disease, allergy to macrolides
+**Notes:** Convenient short course. Useful when penicillin allergy.
+
+Azithromycin's long half-life means it continues working days after the last dose. Common backup when amoxicillin fails or is contraindicated. Prolongs the QT interval — caution in patients with heart conditions.
+
+---
+
+## CIPROFLOXACIN
+**Trade names:** Cipro, Baycip, Ciproxin
+**Class:** Fluoroquinolone antibiotic
+**Used for:** Urinary tract infections, traveler's diarrhea (severe), bone infections, prostatitis, anthrax exposure
+**Adult dose:** 250–750 mg every 12 hours, depending on infection
+**Avoid if:** Pregnancy, breastfeeding, children, history of tendinitis, myasthenia gravis
+**Notes:** Risk of tendon rupture (especially Achilles). Avoid sun exposure. Don't take with dairy or antacids.
+
+Ciprofloxacin is broad-spectrum but reserved for serious infections due to side effects and growing resistance. Effective against many gut pathogens — historically standard for traveler's diarrhea. For uncomplicated cases, azithromycin is now often preferred in regions with fluoroquinolone resistance.
+
+---
+
+## DOXYCYCLINE
+**Trade names:** Vibramycin, Vibravenosa, Doryx, Atridox
+**Class:** Tetracycline antibiotic
+**Used for:** Lyme disease, malaria prevention, acne, sexually transmitted infections, leptospirosis, anthrax
+**Adult dose:** 100 mg every 12 hours; for malaria prophylaxis: 100 mg daily
+**Avoid if:** Pregnancy, breastfeeding, children under 8 (stains teeth), severe liver disease
+**Notes:** Causes severe sun sensitivity. Take with full glass of water, do not lie down for 30 min. Don't take with dairy or iron.
+
+Doxycycline is the antibiotic of choice for tick-borne diseases (Lyme, Rocky Mountain spotted fever) and a common malaria prophylactic for travelers. The sun sensitivity is real — sunburn can be severe with normal sun exposure.
+
+---
+
+## METRONIDAZOLE
+**Trade names:** Flagyl, Metrosa, Nidagel
+**Class:** Antibiotic / antiprotozoal
+**Used for:** Anaerobic bacterial infections, giardiasis, amoebic dysentery, dental abscess, bacterial vaginosis, C. difficile
+**Adult dose:** 400–500 mg every 8 hours for 5–10 days
+**Avoid if:** First trimester of pregnancy, alcohol consumption (severe disulfiram-like reaction)
+**Notes:** Strict no alcohol during and 48 hours after. Causes metallic taste.
+
+Metronidazole is essential for travelers exposed to contaminated water (giardiasis from streams, lakes). The disulfiram reaction with alcohol — flushing, vomiting, palpitations — is severe and well-documented.
+
+---
+
+## TRIMETHOPRIM-SULFAMETHOXAZOLE (CO-TRIMOXAZOLE)
+**Trade names:** Bactrim, Septra, Septrin, Sulfatrim
+**Class:** Sulfonamide combination antibiotic
+**Used for:** Urinary tract infections, traveler's diarrhea, pneumocystis pneumonia, MRSA skin infections
+**Adult dose:** 1 double-strength tablet (160/800 mg) every 12 hours
+**Avoid if:** Sulfa allergy, pregnancy near term, severe kidney disease, folate deficiency
+**Notes:** Common cause of severe skin reactions (Stevens-Johnson syndrome). Stop if rash develops.
+
+Bactrim/Septra is widely used outside Europe for UTIs and is a key second-line antibiotic. Always inform patients to stop and seek help if a rash appears, as Stevens-Johnson syndrome is rare but life-threatening.
+
+---
+
+## CEFALEXIN
+**Trade names:** Keflex, Cefadina, Sporidex
+**Class:** First-generation cephalosporin antibiotic
+**Used for:** Skin infections, urinary tract infections, ear infections, dental infections
+**Adult dose:** 500 mg every 6–8 hours for 7–14 days
+**Avoid if:** Cephalosporin or severe penicillin allergy
+**Notes:** Generally well-tolerated. About 5–10% of penicillin-allergic patients also react to cephalosporins.
+
+Cefalexin is a useful alternative when penicillins are contraindicated by mild allergy. Excellent activity against staphylococci and streptococci common in skin and soft tissue infections.
+
+---
+
+## NITROFURANTOIN
+**Trade names:** Macrobid, Furadantin, Furantoina
+**Class:** Antibiotic (urinary-specific)
+**Used for:** Uncomplicated urinary tract infections (cystitis)
+**Adult dose:** 100 mg every 12 hours for 5 days
+**Avoid if:** Severe kidney disease (eGFR < 45), pregnancy at term, glucose-6-phosphate dehydrogenase deficiency
+**Notes:** Concentrates only in urine — does not treat systemic infections or pyelonephritis. May turn urine brown.
+
+Nitrofurantoin remains effective against most UTI pathogens because its narrow use limits resistance. Preferred first-line for uncomplicated cystitis in many guidelines.
+
+---
+
+## LORATADINE
+**Trade names:** Claritin, Civeran, Clarityne, Velodan
+**Class:** Antihistamine (second-generation, non-sedating)
+**Used for:** Allergic rhinitis (hay fever), urticaria (hives), allergic skin reactions
+**Adult dose:** 10 mg once daily
+**Avoid if:** Severe liver disease
+**Notes:** Non-sedating in most patients. Safe for daytime use.
+
+Loratadine is one of the safest antihistamines for daytime use as it does not cause drowsiness in most people. Onset of action is 1–2 hours, peak effect 8–12 hours, lasting 24 hours.
+
+---
+
+## CETIRIZINE
+**Trade names:** Zyrtec, Reactine, Alerlisin, Virlix
+**Class:** Antihistamine (second-generation)
+**Used for:** Allergic rhinitis, urticaria, allergic conjunctivitis
+**Adult dose:** 10 mg once daily
+**Avoid if:** Severe kidney disease (dose adjust)
+**Notes:** Slightly more sedating than loratadine but more effective for some patients.
+
+Cetirizine works faster than loratadine (within 30–60 min) and is often preferred for acute allergic episodes. Mild drowsiness occurs in 10–15% of users.
+
+---
+
+## DIPHENHYDRAMINE
+**Trade names:** Benadryl, Soñodor, Dormidina, Nytol
+**Class:** Antihistamine (first-generation, sedating)
+**Used for:** Allergic reactions, motion sickness, insomnia, mild anxiety
+**Adult dose:** 25–50 mg every 4–6 hours
+**Avoid if:** Glaucoma, prostate enlargement, elderly (causes confusion), driving
+**Notes:** Strongly sedating. Crosses blood-brain barrier. First-line for severe allergic reactions when only oral medication is available.
+
+Diphenhydramine is the strongest over-the-counter antihistamine for severe allergic reactions when injectable epinephrine isn't available. Sedation is significant — never combine with alcohol or operate machinery.
+
+---
+
+## DESLORATADINE
+**Trade names:** Aerius, Clarinex, Azomyr
+**Class:** Antihistamine (third-generation)
+**Used for:** Persistent allergic rhinitis, urticaria
+**Adult dose:** 5 mg once daily
+**Notes:** Active metabolite of loratadine. Similar profile but slightly more potent.
+
+---
+
+## OMEPRAZOLE
+**Trade names:** Prilosec, Losec, Omeprol, Prazidec, Ulceral, Mopral
+**Class:** Proton pump inhibitor (PPI)
+**Used for:** Stomach ulcers, GERD (reflux), H. pylori (in combination), prevention of NSAID-induced ulcers
+**Adult dose:** 20 mg once daily before breakfast, for 4–8 weeks
+**Avoid if:** Allergy to PPIs
+**Notes:** Long-term use linked to vitamin B12 and magnesium deficiency, increased fracture risk, risk of C. difficile infection.
+
+Omeprazole and other PPIs are among the most prescribed drugs worldwide. Effective for acid-related conditions but should not be used long-term without medical review. May interact with clopidogrel and other drugs.
+
+---
+
+## PANTOPRAZOLE
+**Trade names:** Protonix, Pantoloc, Anagastra, Pantecta
+**Class:** Proton pump inhibitor (PPI)
+**Used for:** Severe GERD, Zollinger-Ellison syndrome, ulcer prevention in critically ill patients
+**Adult dose:** 40 mg once daily
+**Notes:** Fewer drug interactions than omeprazole. Often preferred in patients on multiple medications.
+
+---
+
+## RANITIDINE
+**Trade names:** Zantac, Coralen
+**Class:** H2-receptor antagonist
+**Used for:** Acid reflux, ulcer prevention
+**Notes:** Withdrawn in many countries (2020) due to NDMA contamination concerns. Replaced by famotidine in most markets.
+
+---
+
+## FAMOTIDINE
+**Trade names:** Pepcid, Famotin
+**Class:** H2-receptor antagonist
+**Used for:** Mild GERD, heartburn, ulcer prevention
+**Adult dose:** 20–40 mg once or twice daily
+**Notes:** Replacement for ranitidine after withdrawal. Faster onset than PPIs but less potent.
+
+---
+
+## LOPERAMIDE
+**Trade names:** Imodium, Diareston, Fortasec
+**Class:** Antidiarrheal (opioid receptor agonist, peripheral)
+**Used for:** Acute non-infectious diarrhea, traveler's diarrhea (with caution)
+**Adult dose:** 4 mg initially, then 2 mg after each loose stool, max 16 mg per day
+**Avoid if:** Bloody diarrhea, high fever, suspected bacterial dysentery, children under 2
+**Notes:** Do not use if there's blood in stool or fever above 38.5°C — these signs suggest invasive bacterial infection that needs to flush out.
+
+Loperamide stops gut motility, providing symptomatic relief. In invasive infections, slowing the gut allows bacteria to multiply — making things worse. Use only for watery, non-feverish diarrhea.
+
+---
+
+## ORAL REHYDRATION SALTS (ORS)
+**Trade names:** Pedialyte, Sueroral, Recovery, OralSuero, Hydralyte, WHO ORS
+**Class:** Electrolyte replacement
+**Used for:** Dehydration from diarrhea, vomiting, heat stress
+**Adult dose:** 200–400 mL after each loose stool; sip continuously if vomiting
+**Notes:** First-line treatment for dehydration. More effective than water alone.
+
+ORS is the most lifesaving medication in low-resource settings, preventing millions of deaths from diarrheal disease. The exact balance of salt, sugar, and water enables intestinal absorption even when severely dehydrated. If commercial sachets unavailable: 1 liter clean water + 6 teaspoons sugar + half teaspoon salt.
+
+---
+
+## ONDANSETRON
+**Trade names:** Zofran, Yatrox, Setronon
+**Class:** Antiemetic (5-HT3 receptor antagonist)
+**Used for:** Severe nausea and vomiting (chemotherapy, post-surgical, gastroenteritis)
+**Adult dose:** 4–8 mg every 8–12 hours
+**Avoid if:** QT prolongation, congenital long QT syndrome
+**Notes:** Effective when other antiemetics fail. Available as orally disintegrating tablets useful when patient can't keep food down.
+
+Ondansetron is a powerful antiemetic originally developed for chemotherapy. Its use has expanded to severe gastroenteritis and pregnancy nausea. Constipation and headache are common side effects.
+
+---
+
+## METOCLOPRAMIDE
+**Trade names:** Reglan, Primperan, Maxolon
+**Class:** Antiemetic, prokinetic
+**Used for:** Nausea, vomiting, gastroparesis, migraine-associated nausea
+**Adult dose:** 10 mg every 8 hours, max 5 days
+**Avoid if:** Bowel obstruction, Parkinson's disease, history of dystonia
+**Notes:** Risk of extrapyramidal symptoms (involuntary movements), especially in young women and elderly. Use limited to short courses.
+
+---
+
+## HYOSCINE BUTYLBROMIDE (BUSCAPINA)
+**Trade names:** Buscopan, Buscapina, Spasmonal
+**Class:** Antispasmodic
+**Used for:** Abdominal cramps, menstrual pain, intestinal colic, biliary colic
+**Adult dose:** 10–20 mg every 6 hours
+**Avoid if:** Glaucoma, prostate enlargement, myasthenia gravis
+**Notes:** Useful for colicky abdominal pain when cause is unclear.
+
+---
+
+## SALBUTAMOL (ALBUTEROL)
+**Trade names:** Ventolin, ProAir, Asmavent, Salamol
+**Class:** Short-acting beta-2 agonist (SABA), bronchodilator
+**Used for:** Asthma attacks, COPD exacerbations
+**Adult dose:** 1–2 puffs (100–200 µg) every 4–6 hours via inhaler; in severe attacks, more frequent
+**Avoid if:** Severe heart disease (use with caution)
+**Notes:** Causes tremor, palpitations. Onset within minutes. Use a spacer for better delivery.
+
+In an acute asthma attack, salbutamol is first-line. The blue inhaler is universally recognized. If a person needs salbutamol more than twice a week as a baseline, asthma is poorly controlled and requires medical review.
+
+---
+
+## BUDESONIDE / FORMOTEROL
+**Trade names:** Symbicort, Vannair, Bufomix
+**Class:** Inhaled corticosteroid + long-acting beta-2 agonist
+**Used for:** Asthma maintenance, COPD
+**Adult dose:** 1–2 puffs twice daily
+**Notes:** Maintenance medication, not for acute attacks (despite the formoterol component, dosing for relief differs). Rinse mouth after use to prevent oral thrush.
+
+---
+
+## PREDNISOLONE / PREDNISONE
+**Trade names:** Deltasone, Estilsona, Dacortin
+**Class:** Corticosteroid
+**Used for:** Severe asthma, severe allergic reactions, autoimmune flares, anaphylaxis follow-up
+**Adult dose:** Variable; 30–50 mg daily for short courses (5–7 days)
+**Avoid if:** Active untreated infection, recent live vaccines
+**Notes:** Long-term use causes weight gain, osteoporosis, diabetes, immunosuppression. Short courses are well-tolerated. Do not stop abruptly after long use.
+
+---
+
+## EPINEPHRINE (ADRENALINE)
+**Trade names:** EpiPen, Adrenaclick, Jext, Anapen
+**Class:** Sympathomimetic
+**Used for:** Anaphylaxis (severe allergic reaction), cardiac arrest, severe asthma
+**Adult dose:** 0.3 mg intramuscular (auto-injector) into outer thigh, repeat in 5–15 min if needed
+**Notes:** First-line treatment for anaphylaxis. There's no contraindication in true anaphylaxis — without it, the patient may die.
+
+Anaphylaxis signs: rapid swelling of face/throat, difficulty breathing, hives spreading, drop in blood pressure. Inject through clothing into outer thigh, hold 10 seconds. Always call emergency services after — second wave of reaction can occur 4–12 hours later.
+
+---
+
+## METFORMIN
+**Trade names:** Glucophage, Diabex, Fortamet, Glafornil
+**Class:** Biguanide antidiabetic
+**Used for:** Type 2 diabetes (first-line), polycystic ovary syndrome
+**Adult dose:** 500–1000 mg twice daily with meals
+**Avoid if:** Severe kidney disease (eGFR < 30), severe liver disease, active dehydration
+**Notes:** Common cause of GI side effects (nausea, diarrhea), often improves over weeks. Rarely causes lactic acidosis.
+
+Metformin is the most prescribed diabetes drug worldwide. Should be paused 48 hours around contrast imaging studies and during severe illness/dehydration.
+
+---
+
+## INSULIN (RAPID-ACTING)
+**Trade names:** NovoRapid, Humalog, Apidra
+**Class:** Insulin analog (rapid-acting)
+**Used for:** Type 1 diabetes, severe Type 2 diabetes, diabetic ketoacidosis
+**Notes:** Onset 5–15 min, peak 1–2 hours. Inject before meals. Refrigerate unopened vials.
+
+---
+
+## INSULIN (LONG-ACTING)
+**Trade names:** Lantus, Toujeo, Tresiba, Levemir
+**Class:** Insulin analog (long-acting)
+**Used for:** Diabetes (basal insulin)
+**Notes:** Once-daily injection. Provides background insulin coverage. Do not mix in syringe with other insulins.
+
+---
+
+## ATORVASTATIN
+**Trade names:** Lipitor, Atoris, Cardyl
+**Class:** Statin (HMG-CoA reductase inhibitor)
+**Used for:** High cholesterol, prevention of heart attack and stroke
+**Adult dose:** 10–80 mg once daily, usually at night
+**Avoid if:** Active liver disease, pregnancy, breastfeeding
+**Notes:** Causes muscle pain in some patients. Rare but serious risk of rhabdomyolysis (severe muscle breakdown) — stop if widespread muscle pain or dark urine.
+
+Statins are highly effective for reducing cardiovascular events in people with risk factors. Most muscle aches are benign but significant new muscle pain warrants stopping and checking creatine kinase.
+
+---
+
+## SIMVASTATIN
+**Trade names:** Zocor, Zocord
+**Class:** Statin
+**Used for:** High cholesterol
+**Adult dose:** 10–40 mg at night
+**Notes:** More drug interactions than atorvastatin. Grapefruit juice significantly increases blood levels.
+
+---
+
+## ENALAPRIL
+**Trade names:** Vasotec, Renitec, Renivace
+**Class:** ACE inhibitor
+**Used for:** Hypertension, heart failure, kidney protection in diabetes
+**Adult dose:** 5–20 mg once or twice daily
+**Avoid if:** Pregnancy (causes fetal harm), severe kidney artery stenosis, hyperkalemia
+**Notes:** Can cause persistent dry cough (10–15% of patients). Monitor potassium and kidney function.
+
+---
+
+## LISINOPRIL
+**Trade names:** Prinivil, Zestril
+**Class:** ACE inhibitor
+**Used for:** Hypertension, heart failure
+**Adult dose:** 10–40 mg once daily
+**Notes:** Same class as enalapril but once-daily dosing.
+
+---
+
+## LOSARTAN
+**Trade names:** Cozaar, Hyzaar, Cardiovas
+**Class:** Angiotensin receptor blocker (ARB)
+**Used for:** Hypertension, heart failure, kidney protection
+**Adult dose:** 50–100 mg once daily
+**Avoid if:** Pregnancy
+**Notes:** Alternative to ACE inhibitors when cough develops. No cough side effect.
+
+---
+
+## AMLODIPINE
+**Trade names:** Norvasc, Astudal, Amlor
+**Class:** Calcium channel blocker
+**Used for:** Hypertension, angina (chest pain)
+**Adult dose:** 5–10 mg once daily
+**Notes:** Common side effect: ankle swelling. Headache and flushing in first weeks.
+
+---
+
+## ATENOLOL
+**Trade names:** Tenormin, Tenoretic
+**Class:** Beta-blocker
+**Used for:** Hypertension, angina, irregular heart rhythm, post-heart attack
+**Adult dose:** 25–100 mg once daily
+**Avoid if:** Severe asthma, very slow heart rate, advanced heart block
+**Notes:** Do not stop abruptly — can cause rebound tachycardia and angina.
+
+---
+
+## METOPROLOL
+**Trade names:** Lopressor, Beloken
+**Class:** Beta-blocker (cardioselective)
+**Used for:** Hypertension, heart failure, angina, post-heart attack
+**Adult dose:** 25–200 mg twice daily (immediate-release) or once daily (extended-release)
+**Notes:** Better tolerated by asthmatics than non-selective beta-blockers, but still requires caution.
+
+---
+
+## BISOPROLOL
+**Trade names:** Concor, Cardicor, Emconcor
+**Class:** Beta-blocker (highly cardioselective)
+**Used for:** Hypertension, heart failure, angina
+**Adult dose:** 1.25–10 mg once daily
+**Notes:** Preferred beta-blocker in heart failure. Once-daily dosing.
+
+---
+
+## FUROSEMIDE
+**Trade names:** Lasix, Seguril
+**Class:** Loop diuretic
+**Used for:** Heart failure, kidney/liver-related edema, hypertension (less common)
+**Adult dose:** 20–80 mg once daily, may go higher in severe heart failure
+**Avoid if:** Severe dehydration, anuria
+**Notes:** Causes large volumes of urine. Monitor potassium — often requires supplementation. Take in the morning.
+
+---
+
+## HYDROCHLOROTHIAZIDE
+**Trade names:** HCTZ, Esidrex, often combined with other antihypertensives
+**Class:** Thiazide diuretic
+**Used for:** Hypertension, mild edema
+**Adult dose:** 12.5–25 mg once daily
+**Notes:** Can cause increased blood sugar, gout, low potassium. Often combined in single pill with ACE inhibitors or ARBs.
+
+---
+
+## NITROGLYCERIN (GLYCERYL TRINITRATE)
+**Trade names:** Nitrostat, Cafinitrina (sublingual), Trinispray, Vernies
+**Class:** Vasodilator (nitrate)
+**Used for:** Acute angina (chest pain), heart failure, hypertensive emergency
+**Adult dose:** 0.3–0.6 mg sublingual every 5 min, max 3 doses
+**Avoid if:** Recent use of phosphodiesterase inhibitors (sildenafil, tadalafil) — life-threatening hypotension
+**Notes:** Causes severe headache. Sit down before taking — can cause sudden drop in blood pressure.
+
+In suspected angina, sit the person down, give nitroglycerin sublingually, wait 5 minutes. If pain persists after 3 doses over 15 minutes, suspect myocardial infarction and get emergency help.
+
+---
+
+## CLOPIDOGREL
+**Trade names:** Plavix, Iscover
+**Class:** Antiplatelet
+**Used for:** Prevention of heart attack and stroke after coronary stent or in high-risk patients, peripheral arterial disease
+**Adult dose:** 75 mg once daily
+**Avoid if:** Active bleeding, severe liver disease
+**Notes:** Often combined with aspirin. Stop 5–7 days before elective surgery.
+
+---
+
+## WARFARIN
+**Trade names:** Coumadin, Aldocumar
+**Class:** Vitamin K antagonist anticoagulant
+**Used for:** Atrial fibrillation, deep vein thrombosis, pulmonary embolism, mechanical heart valves
+**Adult dose:** Variable — adjusted based on INR blood test
+**Avoid if:** Pregnancy, active bleeding
+**Notes:** Many drug and food interactions. Requires regular INR monitoring. Vitamin K (in green leafy vegetables) reduces effect.
+
+---
+
+## RIVAROXABAN
+**Trade names:** Xarelto
+**Class:** Direct oral anticoagulant (DOAC)
+**Used for:** Atrial fibrillation, DVT/PE treatment and prevention
+**Adult dose:** 20 mg once daily with food (atrial fibrillation)
+**Notes:** No INR monitoring needed. Take with food to improve absorption.
+
+---
+
+## DIGOXIN
+**Trade names:** Lanoxin, Digitalis
+**Class:** Cardiac glycoside
+**Used for:** Atrial fibrillation rate control, advanced heart failure
+**Adult dose:** 0.125–0.25 mg once daily
+**Notes:** Narrow therapeutic window. Toxicity causes nausea, vision changes (yellow-green halos), arrhythmias.
+
+---
+
+## LEVOTHYROXINE
+**Trade names:** Synthroid, Eutirox, Levothyrox, Eltroxin
+**Class:** Thyroid hormone replacement
+**Used for:** Hypothyroidism, after thyroid removal, thyroid cancer suppression
+**Adult dose:** 50–200 µg once daily on empty stomach
+**Notes:** Take 30 min before breakfast. Absorption affected by calcium, iron, antacids, coffee.
+
+---
+
+## SERTRALINE
+**Trade names:** Zoloft, Lustral, Aremis
+**Class:** SSRI antidepressant
+**Used for:** Depression, anxiety, panic disorder, PTSD, OCD
+**Adult dose:** 50–200 mg once daily
+**Avoid if:** MAO inhibitor use within 14 days
+**Notes:** Takes 4–6 weeks for full effect. Initial nausea and sexual side effects common. Do not stop abruptly.
+
+---
+
+## FLUOXETINE
+**Trade names:** Prozac, Adofen, Reneuron
+**Class:** SSRI antidepressant
+**Used for:** Depression, OCD, bulimia, premenstrual dysphoric disorder
+**Adult dose:** 20–60 mg once daily in the morning
+**Notes:** Long half-life — fewer withdrawal symptoms but takes longer to clear after stopping.
+
+---
+
+## CITALOPRAM / ESCITALOPRAM
+**Trade names:** Celexa, Cipralex, Lexapro
+**Class:** SSRI antidepressant
+**Used for:** Depression, generalized anxiety
+**Adult dose:** Citalopram 20–40 mg / Escitalopram 10–20 mg daily
+**Notes:** Citalopram has a dose ceiling for QT prolongation risk (max 20 mg in elderly, 40 mg in adults).
+
+---
+
+## DIAZEPAM
+**Trade names:** Valium, Stesolid, Aneurol
+**Class:** Benzodiazepine
+**Used for:** Acute anxiety, alcohol withdrawal, muscle spasm, status epilepticus, severe insomnia
+**Adult dose:** 2–10 mg orally, every 6–12 hours; rectal in seizures
+**Avoid if:** Severe respiratory depression, sleep apnea, alcohol intoxication
+**Notes:** Highly addictive. Long half-life (20–80 hours). Rectal solution available for emergency seizure management.
+
+In status epilepticus (seizure lasting >5 minutes or repeated seizures), rectal diazepam can be life-saving outside hospital. Standard adult dose: 10 mg rectal.
+
+---
+
+## LORAZEPAM
+**Trade names:** Ativan, Orfidal, Idalprem
+**Class:** Benzodiazepine
+**Used for:** Acute anxiety, panic attacks, alcohol withdrawal, status epilepticus
+**Adult dose:** 0.5–2 mg every 6–8 hours
+**Notes:** Shorter half-life than diazepam. Available sublingual.
+
+---
+
+## ALPRAZOLAM
+**Trade names:** Xanax, Trankimazin
+**Class:** Benzodiazepine (short-acting)
+**Used for:** Panic disorder, severe anxiety
+**Adult dose:** 0.25–0.5 mg every 8 hours
+**Notes:** High addiction potential due to fast onset and short half-life. Not recommended for long-term use.
+
+---
+
+## ZOLPIDEM
+**Trade names:** Ambien, Stilnox, Stilnoct
+**Class:** Z-drug (non-benzodiazepine sedative-hypnotic)
+**Used for:** Short-term insomnia
+**Adult dose:** 5–10 mg at bedtime
+**Notes:** Take only when ready for at least 7 hours of sleep. Risk of complex sleep behaviors (sleep-walking, sleep-driving).
+
+---
+
+## QUETIAPINE
+**Trade names:** Seroquel, Rocoz
+**Class:** Atypical antipsychotic
+**Used for:** Schizophrenia, bipolar disorder, severe depression (adjunct), insomnia (off-label)
+**Adult dose:** 25–800 mg per day depending on indication
+**Notes:** Causes sedation, weight gain, metabolic syndrome.
+
+---
+
+## HALOPERIDOL
+**Trade names:** Haldol, Haloperil
+**Class:** Typical antipsychotic
+**Used for:** Acute psychosis, severe agitation, delirium, intractable nausea
+**Adult dose:** 0.5–10 mg orally or intramuscular
+**Avoid if:** Parkinson's disease, severe heart disease
+**Notes:** Causes extrapyramidal symptoms (tremor, rigidity, restlessness).
+
+---
+
+## ARTEMETHER-LUMEFANTRINE
+**Trade names:** Coartem, Riamet
+**Class:** Antimalarial combination (artemisinin-based)
+**Used for:** Uncomplicated malaria (Plasmodium falciparum)
+**Adult dose:** 4 tablets at 0, 8, 24, 36, 48, 60 hours (24 tablets total over 3 days)
+**Notes:** First-line treatment for uncomplicated falciparum malaria worldwide. Take with fatty meal or milk for absorption.
+
+---
+
+## MEFLOQUINE
+**Trade names:** Lariam, Mephaquin
+**Class:** Antimalarial
+**Used for:** Malaria prophylaxis and treatment in chloroquine-resistant areas
+**Adult dose:** 250 mg weekly (prophylaxis)
+**Avoid if:** History of psychiatric illness, seizures, cardiac conduction abnormalities
+**Notes:** Neuropsychiatric side effects (vivid dreams, anxiety, depression) — switch to alternative if they appear.
+
+---
+
+## ATOVAQUONE-PROGUANIL
+**Trade names:** Malarone
+**Class:** Antimalarial combination
+**Used for:** Malaria prophylaxis and treatment
+**Adult dose:** 1 tablet daily, starting 1–2 days before travel and continuing 7 days after return
+**Notes:** Generally well-tolerated. Take with fatty food. Expensive.
+
+---
+
+## PRAZIQUANTEL
+**Trade names:** Biltricide, Cysticide
+**Class:** Antiparasitic
+**Used for:** Schistosomiasis, tapeworm infections, liver flukes
+**Adult dose:** 40 mg/kg single dose, or divided
+**Notes:** Single-dose treatment for many parasitic infections. Side effects mild and transient.
+
+---
+
+## ALBENDAZOLE / MEBENDAZOLE
+**Trade names:** Zentel, Vermox, Lomper
+**Class:** Antiparasitic (anthelmintic)
+**Used for:** Intestinal worms (roundworm, hookworm, pinworm, whipworm)
+**Adult dose:** Albendazole 400 mg single dose; Mebendazole 100 mg twice daily for 3 days
+**Notes:** Common in mass deworming programs. Repeat dose after 2 weeks for pinworm.
+
+---
+
+## ACYCLOVIR
+**Trade names:** Zovirax, Aciclovir Stada
+**Class:** Antiviral
+**Used for:** Herpes simplex (cold sores, genital herpes), shingles, severe chickenpox
+**Adult dose:** Cold sores: 200 mg 5 times daily. Shingles: 800 mg 5 times daily for 7 days
+**Notes:** Most effective when started within 72 hours of rash onset. Maintain hydration.
+
+---
+
+## OSELTAMIVIR
+**Trade names:** Tamiflu
+**Class:** Antiviral (neuraminidase inhibitor)
+**Used for:** Influenza A and B treatment and prophylaxis
+**Adult dose:** 75 mg twice daily for 5 days
+**Notes:** Most effective when started within 48 hours of symptom onset. Reduces illness duration by ~1 day.
+
+---
+
+## METRONIDAZOLE TOPICAL / IVERMECTIN TOPICAL
+**Used for:** Rosacea, scabies, certain skin conditions
+
+---
+
+## PERMETHRIN (TOPICAL)
+**Trade names:** Sarcop, Permigon, Nix
+**Class:** Insecticide / scaricide
+**Used for:** Scabies, head lice
+**Adult dose:** 5% cream applied head-to-toe for scabies, leave 8–14 hours, wash off; repeat in 7 days
+**Notes:** Treat all close contacts and household. Wash bedding/clothing in hot water.
+
+---
+
+## CLOTRIMAZOLE / MICONAZOLE (TOPICAL)
+**Trade names:** Canesten, Daktarin
+**Class:** Antifungal
+**Used for:** Athlete's foot, ringworm, jock itch, vaginal yeast infections, oral thrush
+**Adult dose:** Apply twice daily for 2–4 weeks
+**Notes:** Continue for 1 week after symptoms resolve to prevent recurrence.
+
+---
+
+## FLUCONAZOLE
+**Trade names:** Diflucan, Loitin
+**Class:** Antifungal (oral)
+**Used for:** Vaginal yeast infections, oral candidiasis, systemic fungal infections
+**Adult dose:** 150 mg single dose for vaginal infection; longer courses for other indications
+**Notes:** Many drug interactions. Avoid in pregnancy unless essential.
+
+---
+
+## HYDROCORTISONE (TOPICAL)
+**Trade names:** Cortizone, Suniderma
+**Class:** Topical corticosteroid (low potency)
+**Used for:** Eczema, mild allergic skin reactions, insect bites, mild rashes
+**Adult dose:** Apply 1% cream 1–2 times daily for short periods
+**Avoid if:** Untreated skin infections, on the face for prolonged periods
+**Notes:** Do not use for more than 7 days without medical advice. Skin thinning with prolonged use.
+
+---
+
+## BETAMETHASONE (TOPICAL)
+**Trade names:** Diprosone, Betnovate, Celestoderm
+**Class:** Topical corticosteroid (medium-high potency)
+**Used for:** Severe eczema, psoriasis, skin inflammation
+**Notes:** More potent than hydrocortisone. Use limited duration. Avoid face and skin folds.
+
+---
+
+## SILVER SULFADIAZINE
+**Trade names:** Silvadene, Flammazine, Silvederma
+**Class:** Antibacterial topical (for burns)
+**Used for:** Prevention of infection in second/third-degree burns
+**Adult dose:** Apply thin layer to clean wound, cover with non-stick dressing, change daily
+**Avoid if:** Sulfa allergy, near term pregnancy, newborns
+**Notes:** Standard burn care worldwide. Forms a slightly grey eschar — normal.
+
+---
+
+## POVIDONE-IODINE
+**Trade names:** Betadine, Iso-Betadine
+**Class:** Antiseptic
+**Used for:** Wound disinfection, surgical skin preparation, gargle for sore throat
+**Notes:** Stains skin and fabric. Avoid prolonged use over large areas (iodine absorption).
+
+---
+
+## CHLORHEXIDINE
+**Trade names:** Hibiscrub, Hibitane, Cristalmina
+**Class:** Antiseptic
+**Used for:** Skin disinfection, wound cleaning, oral care (mouthwash)
+**Notes:** More effective than alcohol against many bacteria. Can stain teeth with prolonged oral use.
+
+---
+
+## ARTIFICIAL TEARS
+**Trade names:** Systane, Optrex, Hyabak, Lipolac
+**Class:** Lubricant eye drops
+**Used for:** Dry eye, eye irritation, contact lens discomfort
+**Notes:** Preservative-free options preferred for frequent use.
+
+---
+
+## TROPICAMIDE / CYCLOPENTOLATE
+**Class:** Mydriatic eye drops (used for ophthalmologic exam)
+
+---
+
+## TIMOLOL
+**Trade names:** Timoptic
+**Class:** Beta-blocker eye drops
+**Used for:** Glaucoma
+**Notes:** Systemic absorption can occur — caution in asthma and heart conditions.
+
+---
+
+## OXYMETAZOLINE / XYLOMETAZOLINE
+**Trade names:** Afrin, Otrivin, Respibien, Vibrocil
+**Class:** Topical decongestant (nasal spray)
+**Used for:** Nasal congestion (cold, allergies)
+**Adult dose:** 1–2 sprays per nostril every 8–12 hours
+**Notes:** Do not use more than 3–5 days — causes rebound congestion (rhinitis medicamentosa).
+
+---
+
+## NALOXONE
+**Trade names:** Narcan
+**Class:** Opioid antagonist
+**Used for:** Reversal of opioid overdose
+**Adult dose:** 0.4–2 mg intramuscular or intranasal, repeat every 2–3 minutes if needed
+**Notes:** Life-saving for opioid overdose. Wears off in 30–90 min — may need repeat dosing as opioid effects can return.
+
+In opioid overdose (slow/absent breathing, pinpoint pupils, unresponsive), naloxone is the antidote. Always call emergency services even after successful reversal — the opioid often outlasts the naloxone.
+
+---
+
+## ACTIVATED CHARCOAL
+**Used for:** Acute oral poisoning (within 1 hour of ingestion)
+**Adult dose:** 50–100 g orally or via NG tube
+**Avoid if:** Loss of consciousness without airway protection, ingestion of hydrocarbons, corrosives, alcohols, iron, lithium
+**Notes:** Effective only for substances it adsorbs (most drugs). Not for everything.
+
+---
+
+## VITAMIN K (PHYTOMENADIONE)
+**Trade names:** Konakion
+**Used for:** Reversal of warfarin, bleeding disorders, newborn vitamin K deficiency
+**Adult dose:** 2.5–10 mg orally, or IV/IM in emergencies
+
+---
+
+## FOLIC ACID
+**Used for:** Pregnancy (neural tube defect prevention), folate deficiency anemia
+**Adult dose:** 0.4 mg daily for women planning pregnancy; 5 mg daily for treatment of deficiency
+
+---
+
+## IRON SULFATE / IRON FUMARATE
+**Trade names:** Feroglobin, Tardyferon, Glossyl
+**Used for:** Iron deficiency anemia
+**Adult dose:** 65 mg elemental iron 1–3 times daily
+**Notes:** Causes constipation, dark stools. Take with vitamin C for better absorption. Don't take with tea, coffee, or calcium.
+
+---
+
+## VITAMIN B12 (CYANOCOBALAMIN)
+**Used for:** B12 deficiency anemia, pernicious anemia, neuropathy from deficiency
+**Notes:** Often given as injection in severe deficiency; oral high-dose effective for most.
+
+---
+
+## VITAMIN D
+**Used for:** Vitamin D deficiency, osteoporosis prevention, bone health
+**Adult dose:** 1000–2000 IU daily; higher therapeutic doses for documented deficiency
+**Notes:** Common deficiency in northern latitudes and indoor lifestyles.
+
+---
+
+## CALCIUM CARBONATE
+**Trade names:** Tums, Caltrate
+**Used for:** Calcium supplementation, antacid (immediate relief)
+**Notes:** Take with meals for better absorption. Excess can cause constipation and kidney stones.
+
+---
+
+## End of reference
+
+This document is intended as a quick-orientation reference for travelers, field operators, or anyone in a remote situation needing to identify or understand a medication. Always consult a qualified medical professional when possible. Do not self-prescribe or self-medicate based on this reference for serious conditions.

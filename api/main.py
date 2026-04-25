@@ -89,6 +89,7 @@ class QueryRequest(BaseModel):
 class QueryResponse(BaseModel):
     question: str
     answer: str
+    kiwix_search_url: str
 
 class OCRResponse(BaseModel):
     text: str
@@ -104,7 +105,7 @@ class ImageQueryResponse(BaseModel):
     source_lang: str       # langdetect ISO 639-1 code
     translated: bool
     answer: str
-    kiwix_search_url: str | None = None
+    kiwix_search_url: str
 
 # --- OCR helpers ---
 def preprocess_for_ocr(image_bytes: bytes) -> np.ndarray:
@@ -160,25 +161,21 @@ async def translate_to_english(text: str, source_lang: str) -> str:
         return text
 
 
-def kiwix_url_if_needed(rag_response, query: str) -> str | None:
-    """Return a Kiwix search URL when the closest node is too far (L2 distance >= threshold)."""
-    print("[DEBUG-RAG] ── query start ──────────────────────────────", flush=True)
+def kiwix_url_if_needed(rag_response, query: str) -> str:
+    """Always return a Kiwix search URL. Logs whether the RAG was confident."""
     try:
         distances = [n.score for n in rag_response.source_nodes if n.score is not None]
-        if not distances:
-            print("[DEBUG-RAG] kiwix: no scored nodes → suggest kiwix")
-            print("[DEBUG-RAG] ── query end ────────────────────────────────", flush=True)
-            return f"http://10.42.0.1:8888/search?pattern={quote(query)}"
-        closest = min(distances)
-        if closest > KIWIX_DISTANCE_THRESHOLD:
-            print(f"[DEBUG-RAG] kiwix: min_distance={closest:.3f} > threshold={KIWIX_DISTANCE_THRESHOLD} → suggest kiwix")
-            print("[DEBUG-RAG] ── query end ────────────────────────────────", flush=True)
-            return f"http://10.42.0.1:8888/search?pattern={quote(query)}"
-        print(f"[DEBUG-RAG] kiwix: min_distance={closest:.3f} <= threshold={KIWIX_DISTANCE_THRESHOLD} → no kiwix")
+        if distances:
+            closest = min(distances)
+            if closest > KIWIX_DISTANCE_THRESHOLD:
+                print(f"[DEBUG-RAG] kiwix: min_distance={closest:.3f} > threshold={KIWIX_DISTANCE_THRESHOLD} (RAG not confident)")
+            else:
+                print(f"[DEBUG-RAG] kiwix: min_distance={closest:.3f} <= threshold={KIWIX_DISTANCE_THRESHOLD} (RAG confident)")
+        else:
+            print("[DEBUG-RAG] kiwix: no scored nodes")
     except Exception as e:
-        print(f"[DEBUG-RAG] kiwix: exception {e!r} → no kiwix")
-    print("[DEBUG-RAG] ── query end ────────────────────────────────", flush=True)
-    return None
+        print(f"[DEBUG-RAG] kiwix: exception {e!r}")
+    return f"http://10.42.0.1:8888/search?pattern={quote(query)}"
 
 
 # --- Routes ---
@@ -197,20 +194,12 @@ def query(request: QueryRequest):
             (i, round(n.score, 3) if n.score is not None else None)
             for i, n in enumerate(response.source_nodes)
         ]
-        scores = [n.score for n in response.source_nodes if n.score is not None]
         print(f"[DEBUG-RAG] prompt_sent={request.question[:120]!r}", flush=True)
         print(f"[DEBUG-RAG] node_scores={node_scores}  threshold={KIWIX_DISTANCE_THRESHOLD}", flush=True)
-        if scores:
-            closest = min(scores)
-            if closest > KIWIX_DISTANCE_THRESHOLD:
-                print(f"[DEBUG-RAG] kiwix: min_distance={closest:.3f} > threshold={KIWIX_DISTANCE_THRESHOLD} → suggest kiwix", flush=True)
-            else:
-                print(f"[DEBUG-RAG] kiwix: min_distance={closest:.3f} <= threshold={KIWIX_DISTANCE_THRESHOLD} → no kiwix", flush=True)
-        else:
-            print("[DEBUG-RAG] kiwix: no scored nodes → suggest kiwix", flush=True)
     except Exception as e:
         print(f"[DEBUG-RAG] could not read node scores: {e!r}", flush=True)
-    return QueryResponse(question=request.question, answer=str(response))
+    kiwix_url = kiwix_url_if_needed(response, request.question)
+    return QueryResponse(question=request.question, answer=str(response), kiwix_search_url=kiwix_url)
 
 
 @app.post("/ocr", response_model=OCRResponse)
@@ -281,12 +270,24 @@ async def query_image(
         english_text = await translate_to_english(ocr_text, source_lang)
         translated = english_text != ocr_text
 
-    # Build prompt
     q = question.strip()
-    if q:
-        prompt = f"{q}\n\nContext from image: {english_text}"
-    else:
-        prompt = f"Explain this text and provide relevant information: {english_text}"
+    prompt = (
+        "You are a helpful assistant. Reply with EXACTLY these four markdown sections in this order:\n\n"
+        "## Identification\n"
+        "One sentence stating what the image appears to contain. Use the OCR text and translation as basis. If unclear, say so plainly.\n\n"
+        "## Translation\n"
+        "The English translation of the OCR text, polished and grammatically clean. Keep it as a direct rendering — do NOT add interpretation.\n\n"
+        "## About\n"
+        "2-3 sentences explaining the medication or topic based ONLY on the knowledge base context provided. "
+        "Focus only on what is relevant to the image content — do NOT list multiple topics or summarize the entire knowledge base. "
+        "If the knowledge base context does not match, write exactly: No specific information found in the local knowledge base.\n\n"
+        "## Wikipedia\n"
+        "Write exactly: For more information, see Wikipedia (link below).\n\n"
+        "---\n"
+        f"OCR text (raw, language: {source_lang}):\n{ocr_text}\n\n"
+        f"English translation:\n{english_text}\n"
+        + (f"\nUser question (hint only): {q}" if q else "")
+    )
 
     rag_response = query_engine.query(prompt)
     answer = str(rag_response)
