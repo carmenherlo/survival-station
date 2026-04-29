@@ -12,9 +12,7 @@ import cv2
 import numpy as np
 import io
 import os
-import httpx
 from urllib.parse import quote
-from langdetect import detect, LangDetectException
 
 # --- App ---
 app = FastAPI(title="Survival Station RAG API")
@@ -102,8 +100,6 @@ class OCRResponse(BaseModel):
 class ImageQueryResponse(BaseModel):
     question: str
     ocr_text: str
-    source_lang: str       # langdetect ISO 639-1 code
-    translated: bool
     answer: str
     kiwix_search_url: str
 
@@ -146,19 +142,6 @@ def run_ocr(image_bytes: bytes, lang: str, psm: int, preprocess: bool) -> str:
 
     return text.strip()
 
-
-async def translate_to_english(text: str, source_lang: str) -> str:
-    """Translate text to English via LibreTranslate. Falls back to original on any error."""
-    try:
-        async with httpx.AsyncClient(timeout=30.0) as client:
-            resp = await client.post(
-                f"{LIBRETRANSLATE_URL}/translate",
-                json={"q": text, "source": source_lang, "target": "en", "format": "text"},
-            )
-            resp.raise_for_status()
-            return resp.json().get("translatedText", text)
-    except Exception:
-        return text
 
 
 def kiwix_url_if_needed(rag_response, query: str) -> str:
@@ -244,7 +227,7 @@ async def query_image(
     question: str = Form(""),
     psm: int = Form(6),
 ):
-    """OCR an image, auto-detect language, translate to English if needed, then query the RAG engine."""
+    """OCR an image, then let the LLM correct OCR errors, translate and answer in one step."""
     if not file.content_type or not file.content_type.startswith("image/"):
         raise HTTPException(status_code=400, detail="File must be an image")
 
@@ -256,37 +239,26 @@ async def query_image(
     if not ocr_text:
         raise HTTPException(status_code=422, detail="No text found in image")
 
-    # Detect language; default to English if text is too short for langdetect
-    source_lang = "en"
-    try:
-        source_lang = detect(ocr_text)
-    except LangDetectException:
-        pass
-
-    # Translate to English if the detected language is not English
-    english_text = ocr_text
-    translated = False
-    if source_lang != "en":
-        english_text = await translate_to_english(ocr_text, source_lang)
-        translated = english_text != ocr_text
-
     q = question.strip()
     prompt = (
-        "You are a helpful assistant. Reply with EXACTLY these four markdown sections in this order:\n\n"
+        "You are a helpful assistant. The text below was extracted from an image using OCR "
+        "and may contain errors (misread characters, broken words, noise). "
+        "Reply with EXACTLY these four markdown sections in this order:\n\n"
         "## Identification\n"
-        "One sentence stating what the image appears to contain. Use the OCR text and translation as basis. If unclear, say so plainly.\n\n"
+        "One sentence stating what the image appears to contain. If unclear, say so plainly.\n\n"
         "## Translation\n"
-        "The English translation of the OCR text, polished and grammatically clean. Keep it as a direct rendering — do NOT add interpretation.\n\n"
+        "The corrected and cleaned version of the OCR text translated to English. "
+        "Fix obvious OCR errors using context. Keep it as a direct rendering — do NOT interpret.\n\n"
         "## About\n"
-        "2-3 sentences explaining the medication or topic based ONLY on the knowledge base context provided. "
-        "Focus only on what is relevant to the image content — do NOT list multiple topics or summarize the entire knowledge base. "
-        "If the knowledge base context does not match, write exactly: No specific information found in the local knowledge base.\n\n"
+        "2-3 sentences explaining the topic based ONLY on the knowledge base context provided. "
+        "Focus only on what is relevant to the image content. "
+        "If the knowledge base context does not match, write exactly: "
+        "No specific information found in the local knowledge base.\n\n"
         "## Wikipedia\n"
         "Write exactly: For more information, see Wikipedia (link below).\n\n"
         "---\n"
-        f"OCR text (raw, language: {source_lang}):\n{ocr_text}\n\n"
-        f"English translation:\n{english_text}\n"
-        + (f"\nUser question (hint only): {q}" if q else "")
+        f"OCR text (raw, may contain errors):\n{ocr_text}\n"
+        + (f"\nUser question: {q}" if q else "")
     )
 
     rag_response = query_engine.query(prompt)
@@ -302,15 +274,12 @@ async def query_image(
     except Exception as e:
         print(f"[DEBUG-RAG] could not read node scores: {e!r}")
 
-    # Use the user's question as the Kiwix search term; fall back to first 100 chars of OCR text
-    search_term = q or english_text[:100]
+    search_term = q or ocr_text[:100]
     kiwix_url = kiwix_url_if_needed(rag_response, search_term)
 
     return ImageQueryResponse(
         question=question,
         ocr_text=ocr_text,
-        source_lang=source_lang,
-        translated=translated,
         answer=answer,
         kiwix_search_url=kiwix_url,
     )

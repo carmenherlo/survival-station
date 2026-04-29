@@ -1,302 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#2d5a27">
-  <link rel="manifest" href="/manifest.json">
-  <title>Survival Station</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: sans-serif;
-      background: #1a1a1a;
-      color: #f0f0f0;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      font-size: 1.5rem;
-      margin-bottom: 8px;
-      color: #7bc67a;
-    }
-
-    .subtitle {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #888;
-      margin-bottom: 32px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-
-    .service-btn {
-      display: block;
-      padding: 20px 12px;
-      background: #2a2a2a;
-      border: 1px solid #3a3a3a;
-      border-radius: 12px;
-      text-align: center;
-      text-decoration: none;
-      color: #f0f0f0;
-      font-size: 0.9rem;
-    }
-
-    .service-btn .icon { font-size: 2rem; display: block; margin-bottom: 8px; }
-    .service-btn:active { background: #333; }
-
-    .rag-section {
-      background: #2a2a2a;
-      border-radius: 12px;
-      padding: 16px;
-    }
-
-    .rag-section h2 {
-      font-size: 1rem;
-      margin-bottom: 12px;
-      color: #7bc67a;
-    }
-
-    textarea {
-      width: 100%;
-      background: #1a1a1a;
-      border: 1px solid #3a3a3a;
-      border-radius: 8px;
-      color: #f0f0f0;
-      padding: 10px;
-      font-size: 0.9rem;
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    button {
-      width: 100%;
-      margin-top: 10px;
-      padding: 12px;
-      background: #2d5a27;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    button:active { background: #3a7a33; }
-    button:disabled { background: #444; cursor: wait; }
-
-    /* Button row: camera | file | ask */
-    .btn-row {
-      display: flex;
-      gap: 8px;
-      margin-top: 10px;
-    }
-    .btn-row button {
-      margin-top: 0;
-    }
-    .btn-row .icon-btn {
-      width: auto;
-      padding: 12px 14px;
-      flex-shrink: 0;
-      font-size: 1.1rem;
-    }
-    .btn-row .ask-btn {
-      flex: 1;
-    }
-
-    /* Image preview */
-    .img-preview {
-      display: none;
-      margin-top: 10px;
-    }
-    .img-preview img {
-      display: block;
-      max-width: 100%;
-      border-radius: 8px;
-      border: 1px solid #3a3a3a;
-    }
-    .img-preview .remove-btn {
-      width: auto;
-      margin-top: 6px;
-      padding: 5px 14px;
-      font-size: 0.8rem;
-      background: #5a2727;
-    }
-    .img-preview .remove-btn:active { background: #7a3333; }
-
-    .answer {
-      margin-top: 12px;
-      padding: 12px;
-      background: #1a1a1a;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      display: none;
-    }
-    .answer.visible { display: block; }
-
-    /* Kiwix suggestion link */
-    .kiwix-suggest {
-      display: none;
-      margin-top: 8px;
-      padding: 10px 12px;
-      background: #1a2a1a;
-      border: 1px solid #2d5a27;
-      border-radius: 8px;
-      font-size: 0.85rem;
-    }
-    .kiwix-suggest a {
-      color: #7bc67a;
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#05070a">
+    <link rel="manifest" href="/manifest.json">
+    <title>TUNDRA OS // UNIT-01</title>
+    <link rel="stylesheet" href="style-tundra.css">
 </head>
 <body>
+    <div id="os-container">
 
-  <h1>⚡ Survival Station</h1>
-  <p class="subtitle">Offline emergency assistant</p>
+        <header id="sys-header" class="header-retro">
+            <div class="retro-inner">
+                <div class="retro-left">
+                    <div class="retro-title">
+                        <span class="retro-title-main">TUNDRA</span><span class="retro-title-sep"> // </span><span class="retro-title-unit">UNIT-01</span>
+                    </div>
+                </div>
+                <div class="retro-center">
+                    <svg viewBox="0 0 100 76" class="retro-logo" fill="none" stroke="var(--cyan)" stroke-linecap="round" stroke-linejoin="round">
+                        <defs>
+                            <filter id="logo-glow" x="-40%" y="-40%" width="180%" height="180%">
+                                <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+                        <g filter="url(#logo-glow)">
+                            <polygon points="2,72 24,24 48,72"  stroke-width="1.5" opacity="0.65"/>
+                            <polygon points="20,72 50,4 80,72"  stroke-width="2.8"/>
+                            <polygon points="52,72 76,24 98,72" stroke-width="1.5" opacity="0.65"/>
+                            <line x1="2" y1="72" x2="98" y2="72" stroke-width="1" opacity="0.35"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="retro-right">
+                    <div class="retro-acronym">T·U·N·D·R·A</div>
+                    <div class="retro-tagline">tactical unified network for distributed resilient access</div>
+                </div>
+            </div>
+        </header>
 
-  <div class="services">
-    <a class="service-btn" href="http://10.42.0.1:8080" target="_blank">
-      <span class="icon">🗺️</span>
-      Maps
-    </a>
-    <a class="service-btn" href="http://10.42.0.1:8888" target="_blank">
-      <span class="icon">📚</span>
-      Wiki
-    </a>
-    <a class="service-btn" href="http://10.42.0.1:8000/docs" target="_blank">
-      <span class="icon">🔧</span>
-      API
-    </a>
-    <a class="service-btn" href="/translator.html">
-      <span class="icon">🌐</span>
-      Translator
-    </a>
-  </div>
+        <main id="dashboard">
 
-  <div class="rag-section">
-    <h2>🤖 Ask the assistant</h2>
-    <textarea id="question" placeholder="How do I purify water without electricity?"></textarea>
+            <!-- SIDEBAR -->
+            <nav id="sidebar">
+                <button class="nav-item active" data-module="core" title="CORE: LLM">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M12 2l9 4.5v11L12 22l-9-4.5v-11z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 2v3M12 19v3M21 6.5l-2.5 1.5M5.5 16l-2.5 1.5M18.5 16l2.5 1.5M3 6.5l2.5 1.5" stroke-linecap="round"/>
+                    </svg>
+                    <small>CORE</small>
+                </button>
+                <button class="nav-item" data-module="intel" title="INTEL: Kiwix Wiki">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10"/>
+                        <text x="12" y="12" font-size="13" text-anchor="middle" dominant-baseline="central" fill="currentColor" stroke="none">i</text>
+                    </svg>
+                    <small>INTEL</small>
+                </button>
+                <button class="nav-item" data-module="coms" title="COMS">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <line x1="12" y1="13" x2="12" y2="22"/>
+                        <path d="M9 11 A4 4 0 0 1 15 11"/>
+                        <path d="M6 8 A7.5 7.5 0 0 1 18 8"/>
+                        <path d="M3.5 5.5 A10.5 10.5 0 0 1 20.5 5.5"/>
+                    </svg>
+                    <small>COMS</small>
+                </button>
+                <button class="nav-item" data-module="scan" title="SCAN">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3"/>
+                        <circle cx="12" cy="12" r="7"/>
+                        <circle cx="12" cy="12" r="11"/>
+                        <line x1="12" y1="1" x2="12" y2="5"/>
+                    </svg>
+                    <small>SCAN</small>
+                </button>
+                <button class="nav-item" data-module="vortex" title="VORTEX">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M13 2l-8 14h6l2 8 8-14h-6l-2-8z"/>
+                    </svg>
+                    <small>VORTEX</small>
+                </button>
+                <button class="nav-item" data-module="logs" title="LOGS">
+                    <svg class="nav-icon" viewBox="0 0 24 24">
+                        <path d="M4 2h12v4h4v16H4V2z"/>
+                        <line x1="8" y1="8"  x2="16" y2="8"/>
+                        <line x1="8" y1="12" x2="16" y2="12"/>
+                        <line x1="8" y1="16" x2="14" y2="16"/>
+                    </svg>
+                    <small>LOGS</small>
+                </button>
+            </nav>
 
-    <!-- Image preview (hidden until file selected) -->
-    <div class="img-preview" id="imgPreview">
-      <img id="previewImg" src="" alt="Selected image">
-      <button class="remove-btn" onclick="clearImage()">✕ Remove image</button>
+            <!-- CENTER PANELS -->
+            <section id="central-core">
+
+                <!-- CORE: LLM -->
+                <div class="module-panel active" data-panel="core">
+                    <div class="panel llm-window">
+                        <div class="panel-label"><span class="status-dot-on"></span> TUNDRA-CORE LLM</div>
+                        <div class="llm-content" id="llm-response">
+                            <div class="llm-placeholder">awaiting query...</div>
+                        </div>
+                    </div>
+
+                    <div class="panel img-preview-panel" id="img-preview">
+                        <img id="preview-thumb" class="img-preview-thumb" src="" alt="">
+                        <span id="preview-name" class="img-preview-name"></span>
+                        <button class="img-remove-btn" onclick="clearImage()">✕ REMOVE</button>
+                    </div>
+
+                    <div class="kiwix-suggest" id="kiwix-suggest">
+                        LOW CONFIDENCE — <a id="kiwix-link" href="#" target="_blank" rel="noopener">SEARCH WIKI</a>
+                    </div>
+
+                    <div class="panel query-window">
+                        <div class="panel-label">QUERY</div>
+                        <div class="query-inner">
+                            <div class="query-actions-wrap" id="query-actions-wrap">
+                                <button class="query-action-btn query-plus-btn" id="btn-plus" title="Actions">
+                                    <svg class="plus-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                                        <line class="plus-h" x1="1" y1="7" x2="13" y2="7"/>
+                                        <line class="plus-v" x1="7" y1="1" x2="7" y2="13"/>
+                                    </svg>
+                                </button>
+                                <div class="query-actions" id="query-actions">
+                                    <button class="query-action-btn" id="btn-photo" title="Take photo">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="3" y="6" width="18" height="13" rx="2"/>
+                                            <circle cx="12" cy="12.5" r="3.5"/>
+                                            <circle cx="18" cy="9" r="0.5" fill="currentColor"/>
+                                        </svg>
+                                    </button>
+                                    <button class="query-action-btn" id="btn-audio" title="Record audio">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M2 12c.5 0 1.5-4 3-4s2.5 8 4 8 2.5-12 4-12 2.5 16 4 16 2.5-8 4-8 2.5 4 3 4"/>
+                                        </svg>
+                                    </button>
+                                    <button class="query-action-btn" id="btn-file" title="Attach file">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <input class="query-input" type="text" placeholder="How do I purify water without electricity?">
+                            <button class="query-btn">SEND</button>
+                        </div>
+                        <input type="file" id="file-input" accept="image/*,application/pdf" hidden>
+                        <input type="file" id="photo-input" accept="image/*" capture="environment" hidden>
+                    </div>
+                </div>
+
+                <!-- INTEL: Kiwix -->
+                <div class="module-panel" data-panel="intel">
+                    <div class="panel module-frame">
+                        <div class="panel-label"><span class="status-dot-on"></span> INTEL // KIWIX WIKI</div>
+                        <div class="module-launch">
+                            <div class="module-launch-desc">offline wikipedia — no internet required</div>
+                            <a href="http://10.42.0.1:8888" target="_blank" rel="noopener" class="module-launch-btn">LAUNCH KIWIX</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COMS -->
+                <div class="module-panel" data-panel="coms">
+                    <div class="panel module-frame">
+                        <div class="panel-label">COMS</div>
+                        <div class="module-offline">MODULE OFFLINE</div>
+                    </div>
+                </div>
+
+                <!-- SCAN -->
+                <div class="module-panel" data-panel="scan">
+                    <div class="panel module-frame">
+                        <div class="panel-label">SCAN</div>
+                        <div class="module-offline">MODULE OFFLINE</div>
+                    </div>
+                </div>
+
+                <!-- VORTEX -->
+                <div class="module-panel" data-panel="vortex">
+                    <div class="panel module-frame">
+                        <div class="panel-label">VORTEX</div>
+                        <div class="module-offline">MODULE OFFLINE</div>
+                    </div>
+                </div>
+
+                <!-- LOGS -->
+                <div class="module-panel" data-panel="logs">
+                    <div class="panel module-frame">
+                        <div class="panel-label">LOGS // SYSTEM EVENTS</div>
+                        <div class="module-offline">
+                            MODULE OFFLINE
+                            <span style="font-size:0.6rem; letter-spacing:1px;">COMING SOON</span>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- WIDGETS -->
+            <aside id="intel-aside">
+                <div class="panel widget-maps">
+                    <div class="panel-label"><span class="status-dot-off"></span> MAPS</div>
+                    <a href="http://10.42.0.1:8080" target="_blank" rel="noopener"
+                       class="maps-content maps-link" title="Open tileserver">
+                        <div class="map-grid">
+                            <div class="map-cell"></div>
+                            <div class="map-cell bunker"></div>
+                            <div class="map-cell bunker"></div>
+                            <div class="map-cell"></div>
+                            <div class="map-cell bunker"></div>
+                            <div class="map-cell"></div>
+                            <div class="map-cell"></div>
+                            <div class="map-cell"></div>
+                            <div class="map-cell"></div>
+                            <div class="map-cell pos"><span class="pos-dot-cell"></span></div>
+                            <div class="map-cell bunker"></div>
+                            <div class="map-cell"></div>
+                            <div class="map-cell"></div>
+                            <div class="map-cell"></div>
+                            <div class="map-cell bunker"></div>
+                            <div class="map-cell"></div>
+                        </div>
+                        <div class="maps-label">SECTOR 4 // TILESERVER</div>
+                    </a>
+                </div>
+
+                <div class="panel widget-spectrum">
+                    <div class="panel-label"><span class="status-dot-off"></span> SIGNAL SPECTRUM</div>
+                    <div class="spectrum-content">
+                        <div class="spectrum-waterfall"></div>
+                        <div class="spectrum-info">
+                            <span class="freq">144.5 MHz</span>
+                            <span class="status-monitor">● MONITORING</span>
+                            <span class="data-type">STORM DATA</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+        </main>
+
+        <!-- CAMERA OVERLAY -->
+        <div id="camera-overlay" class="camera-overlay">
+            <div class="camera-box">
+                <div class="camera-label"><span class="status-dot-on"></span> OPTIC SCAN // LIVE FEED</div>
+                <video id="camera-video" autoplay playsinline muted></video>
+                <div class="camera-controls">
+                    <button id="camera-capture" class="camera-btn-capture">⬤ CAPTURE</button>
+                    <button id="camera-cancel"  class="camera-btn-cancel">✕ ABORT</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="retro-status">
+            TUNDRA OS // S-NET LINK: <span class="stable">STABLE</span> // TUNDRA-CORE LLM [<span class="online">ONLINE</span>]
+        </div>
+
     </div>
 
-    <!-- Hidden file inputs -->
-    <input type="file" id="cameraInput" accept="image/*" capture="environment"
-           style="display:none" onchange="handleImageSelect(this)">
-    <input type="file" id="fileInput" accept="image/*"
-           style="display:none" onchange="handleImageSelect(this)">
+    <script src="/config.js"></script>
+    <script>
+        let activeInterval   = null;
+        let activeCursor     = null;
+        let selectedImageFile = null;
+        let responseImageUrl  = null;
 
-    <div class="btn-row">
-      <button class="icon-btn" title="Take photo" onclick="document.getElementById('cameraInput').click()">📷</button>
-      <button class="icon-btn" title="Choose file" onclick="document.getElementById('fileInput').click()">📁</button>
-      <button class="ask-btn" id="askBtn" onclick="askQuestion()">Ask</button>
-    </div>
-
-    <div class="answer" id="answer"></div>
-    <div class="kiwix-suggest" id="kiwixSuggest">
-      🔍 Low confidence — <a id="kiwixLink" href="#" target="_blank" rel="noopener">Search Wikipedia for this</a>
-    </div>
-  </div>
-
-  <script src="/config.js"></script>
-  <script>
-    let selectedImageFile = null;
-
-    function handleImageSelect(input) {
-      if (!input.files || !input.files[0]) return;
-      selectedImageFile = input.files[0];
-      const url = URL.createObjectURL(selectedImageFile);
-      document.getElementById('previewImg').src = url;
-      document.getElementById('imgPreview').style.display = 'block';
-    }
-
-    function clearImage() {
-      selectedImageFile = null;
-      document.getElementById('imgPreview').style.display = 'none';
-      document.getElementById('previewImg').src = '';
-      document.getElementById('cameraInput').value = '';
-      document.getElementById('fileInput').value = '';
-    }
-
-    async function askQuestion() {
-      const question = document.getElementById('question').value.trim();
-      if (!question && !selectedImageFile) return;
-
-      const btn = document.getElementById('askBtn');
-      const answerDiv = document.getElementById('answer');
-      const kiwixDiv = document.getElementById('kiwixSuggest');
-
-      btn.disabled = true;
-      btn.textContent = 'Thinking...';
-      answerDiv.classList.remove('visible');
-      kiwixDiv.style.display = 'none';
-
-      try {
-        let answer;
-
-        if (selectedImageFile) {
-          const formData = new FormData();
-          formData.append('file', selectedImageFile);
-          if (question) formData.append('question', question);
-
-          const response = await fetch(`${CONFIG.RAG_API}/query/image`, {
-            method: 'POST',
-            body: formData,
-          });
-          if (!response.ok) {
-            const err = await response.json().catch(() => ({}));
-            throw new Error(err.detail || `HTTP ${response.status}`);
-          }
-          const data = await response.json();
-          answer = data.answer;
-
-          if (data.kiwix_search_url) {
-            document.getElementById('kiwixLink').href = data.kiwix_search_url;
-            kiwixDiv.style.display = 'block';
-          }
-        } else {
-          const response = await fetch(`${CONFIG.RAG_API}/query`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ question }),
-          });
-          if (!response.ok) {
-            const err = await response.json().catch(() => ({}));
-            throw new Error(err.detail || `HTTP ${response.status}`);
-          }
-          const data = await response.json();
-          answer = data.answer;
+        // ── Image handling ──────────────────────────────────────────────
+        function handleImageSelect(input) {
+            if (!input.files || !input.files[0]) return;
+            selectedImageFile = input.files[0];
+            document.getElementById('preview-thumb').src = URL.createObjectURL(selectedImageFile);
+            document.getElementById('preview-name').textContent = selectedImageFile.name;
+            document.getElementById('img-preview').style.display = 'flex';
         }
 
-        answerDiv.textContent = answer;
-        answerDiv.classList.add('visible');
-      } catch (err) {
-        answerDiv.textContent = `Error: ${err.message || 'Could not connect to the assistant.'}`;
-        answerDiv.classList.add('visible');
-      }
+        function clearImage() {
+            const thumb = document.getElementById('preview-thumb');
+            URL.revokeObjectURL(thumb.src);
+            thumb.src = '';
+            selectedImageFile = null;
+            document.getElementById('img-preview').style.display = 'none';
+            document.getElementById('file-input').value  = '';
+            document.getElementById('photo-input').value = '';
+        }
 
-      btn.disabled = false;
-      btn.textContent = 'Ask';
-    }
-  </script>
+        // ── Typing effect ───────────────────────────────────────────────
+        function typeText(text, container, scrollTarget, speed = 18) {
+            if (activeInterval) { clearInterval(activeInterval); activeInterval = null; }
+            if (activeCursor)   { activeCursor.remove();         activeCursor = null; }
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/sw.js');
-    }
-  </script>
+            container.innerHTML = '';
+            const pre = document.createElement('pre');
+            pre.classList.add('llm-typed');
+            container.appendChild(pre);
 
+            let i = 0;
+            activeCursor = document.createElement('span');
+            activeCursor.classList.add('type-cursor');
+            activeCursor.textContent = '█';
+            pre.appendChild(activeCursor);
+
+            const scroller = scrollTarget || container;
+            activeInterval = setInterval(() => {
+                pre.insertBefore(document.createTextNode(text[i]), activeCursor);
+                i++;
+                scroller.scrollTop = scroller.scrollHeight;
+                if (i >= text.length) {
+                    clearInterval(activeInterval); activeInterval = null;
+                    activeCursor.remove();         activeCursor = null;
+                }
+            }, speed);
+        }
+
+        // ── Send query ──────────────────────────────────────────────────
+        async function sendQuery() {
+            const input      = document.querySelector('.query-input');
+            const responseEl = document.getElementById('llm-response');
+            const kiwixDiv   = document.getElementById('kiwix-suggest');
+            const question   = input.value.trim();
+
+            if (!question && !selectedImageFile) return;
+
+            if (activeInterval) { clearInterval(activeInterval); activeInterval = null; }
+            if (activeCursor)   { activeCursor.remove(); activeCursor = null; }
+            if (responseImageUrl) { URL.revokeObjectURL(responseImageUrl); responseImageUrl = null; }
+
+            responseEl.innerHTML = '';
+            kiwixDiv.style.display = 'none';
+            input.value = '';
+
+            const imageFile = selectedImageFile;
+            if (imageFile) {
+                responseImageUrl = URL.createObjectURL(imageFile);
+                const imgBlock = document.createElement('div');
+                imgBlock.classList.add('response-image');
+                const img = document.createElement('img');
+                img.src = responseImageUrl;
+                img.classList.add('response-img');
+                imgBlock.appendChild(img);
+                responseEl.appendChild(imgBlock);
+            }
+
+            const loadingEl = document.createElement('div');
+            loadingEl.classList.add('llm-placeholder');
+            loadingEl.textContent = 'processing...';
+            responseEl.appendChild(loadingEl);
+
+            try {
+                let answer, kiwixUrl;
+
+                if (imageFile) {
+                    const form = new FormData();
+                    form.append('file', imageFile);
+                    if (question) form.append('question', question);
+                    const res  = await fetch(`${CONFIG.RAG_API}/query/image`, { method: 'POST', body: form });
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const data = await res.json();
+                    answer   = data.answer;
+                    kiwixUrl = data.kiwix_search_url;
+                } else {
+                    const res  = await fetch(`${CONFIG.RAG_API}/query`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ question }),
+                    });
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const data = await res.json();
+                    answer = data.answer;
+                }
+
+                loadingEl.remove();
+                const answerDiv = document.createElement('div');
+                responseEl.appendChild(answerDiv);
+                typeText(answer, answerDiv, responseEl);
+
+                if (kiwixUrl) {
+                    document.getElementById('kiwix-link').href = kiwixUrl;
+                    kiwixDiv.style.display = 'block';
+                }
+
+                clearImage();
+
+            } catch (err) {
+                loadingEl.textContent = `ERROR: ${err.message}`;
+            }
+        }
+
+        // ── Navigation ──────────────────────────────────────────────────
+        document.querySelectorAll('.nav-item').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const module = this.dataset.module;
+                document.querySelectorAll('.module-panel').forEach(p => p.classList.remove('active'));
+                document.querySelector(`.module-panel[data-panel="${module}"]`)?.classList.add('active');
+
+                const dashboard = document.getElementById('dashboard');
+                dashboard.classList.toggle('show-intel', module === 'intel');
+            });
+        });
+
+        // ── Buttons ─────────────────────────────────────────────────────
+        document.querySelector('.query-btn').addEventListener('click', sendQuery);
+        document.querySelector('.query-input').addEventListener('keydown', e => {
+            if (e.key === 'Enter') sendQuery();
+        });
+
+        // ── Actions menu ────────────────────────────────────────────────
+        const actionsWrap = document.getElementById('query-actions-wrap');
+        document.getElementById('btn-plus').addEventListener('click', (e) => {
+            e.stopPropagation();
+            actionsWrap.classList.toggle('open');
+        });
+
+        document.addEventListener('click', () => actionsWrap.classList.remove('open'));
+        document.getElementById('query-actions').addEventListener('click', (e) => e.stopPropagation());
+
+        document.getElementById('btn-file').addEventListener('click', () => {
+            document.getElementById('file-input').click();
+            actionsWrap.classList.remove('open');
+        });
+        document.getElementById('file-input').addEventListener('change',  function () { handleImageSelect(this); });
+        document.getElementById('photo-input').addEventListener('change', function () { handleImageSelect(this); });
+
+        // ── Camera (getUserMedia) ───────────────────────────────────────
+        let cameraStream = null;
+
+        async function openCamera() {
+            if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+                // Mobile: native camera app via file input — correct FOV and lens
+                document.getElementById('photo-input').click();
+                return;
+            }
+            // Desktop: getUserMedia for webcam
+            try {
+                cameraStream = await navigator.mediaDevices.getUserMedia({
+                    video: { width: { ideal: 1280 }, height: { ideal: 720 } }
+                });
+                const track = cameraStream.getVideoTracks()[0];
+                const caps  = track.getCapabilities?.();
+                if (caps?.zoom) {
+                    await track.applyConstraints({ advanced: [{ zoom: caps.zoom.min }] });
+                }
+                document.getElementById('camera-video').srcObject = cameraStream;
+                document.getElementById('camera-overlay').classList.add('open');
+            } catch (err) {
+                document.getElementById('photo-input').click();
+            }
+        }
+
+        function closeCamera() {
+            if (cameraStream) { cameraStream.getTracks().forEach(t => t.stop()); cameraStream = null; }
+            document.getElementById('camera-video').srcObject = null;
+            document.getElementById('camera-overlay').classList.remove('open');
+        }
+
+        function capturePhoto() {
+            const video  = document.getElementById('camera-video');
+            const canvas = document.createElement('canvas');
+            canvas.width  = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            closeCamera();
+            canvas.toBlob(blob => {
+                selectedImageFile = new File([blob], 'capture.jpg', { type: 'image/jpeg' });
+                document.getElementById('preview-thumb').src = URL.createObjectURL(selectedImageFile);
+                document.getElementById('preview-name').textContent = 'capture.jpg';
+                document.getElementById('img-preview').style.display = 'flex';
+            }, 'image/jpeg', 0.92);
+        }
+
+        document.getElementById('btn-photo').addEventListener('click', () => {
+            actionsWrap.classList.remove('open');
+            openCamera();
+        });
+        document.getElementById('camera-capture').addEventListener('click', capturePhoto);
+        document.getElementById('camera-cancel').addEventListener('click',  closeCamera);
+    </script>
+
+    <script>
+        if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');
+    </script>
 </body>
 </html>

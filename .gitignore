@@ -16,6 +16,7 @@ environment.yml
 
 # Internal — not for repo
 notes/
+lab/
 
 # Models (too large for git)
 data/models/
@@ -26,6 +27,9 @@ data/translate/
 
 # Docker compose override (use GPUs locally, but not in production)
 docker-compose.override.yml
+
+# TLS certificates (machine-specific, never commit)
+pwa/certs/
 
 # OS
 .DS_Store
