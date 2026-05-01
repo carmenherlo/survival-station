@@ -11,4 +11,4 @@ scrape_configs:
   # Per-container metrics
   - job_name: 'cadvisor'
     static_configs:
-      - targets: ['cadvisor:8081']
+      - targets: ['cadvisor:8080']
