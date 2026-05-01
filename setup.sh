@@ -409,6 +409,7 @@ fi
 # =============================================================================
 sep; info "STEP 8c · Downloading translation language models"
 
+rm -rf "${COMPOSE_DIR}/data/translate/packages"
 mkdir -p "${COMPOSE_DIR}/data/translate"
 chown -R 1032:1032 "${COMPOSE_DIR}/data/translate"
 
