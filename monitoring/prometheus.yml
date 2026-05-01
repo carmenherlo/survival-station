@@ -12,3 +12,8 @@ scrape_configs:
   - job_name: 'cadvisor'
     static_configs:
       - targets: ['cadvisor:8080']
+
+  # NVIDIA GPU metrics
+  - job_name: 'nvidia-gpu'
+    static_configs:
+      - targets: ['nvidia-gpu-exporter:9835']

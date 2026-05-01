@@ -59,8 +59,15 @@ echo -e "  SSID: ${YELLOW}${HOTSPOT_SSID}${RESET}  ·  IP: ${YELLOW}${HOTSPOT_IP
 sep
 
 # =============================================================================
-# STEP 1 — System update + core packages
+# STEP 1 — Hostname + system update + core packages
 # =============================================================================
+sep; info "STEP 1 · Setting hostname"
+
+hostnamectl set-hostname tundra
+echo "tundra" > /etc/hostname
+grep -q "tundra" /etc/hosts || echo "127.0.1.1 tundra" >> /etc/hosts
+log "Hostname set to tundra"
+
 sep; info "STEP 1 · System update & core packages"
 
 apt-get update -qq
