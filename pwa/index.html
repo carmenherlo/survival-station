@@ -101,7 +101,7 @@
                 <!-- CORE: LLM -->
                 <div class="module-panel active" data-panel="core">
                     <div class="panel llm-window">
-                        <div class="panel-label"><span class="status-dot-on"></span> TUNDRA-CORE LLM</div>
+                        <div class="panel-label"><span class="status-dot-on"></span> TUNDRA-CORE</div>
                         <div class="llm-content" id="llm-response">
                             <div class="llm-placeholder">awaiting query...</div>
                         </div>
@@ -270,6 +270,7 @@
         let activeCursor     = null;
         let selectedImageFile = null;
         let responseImageUrl  = null;
+        let submitting        = false;
 
         // ── Image handling ──────────────────────────────────────────────
         function handleImageSelect(input) {
@@ -288,6 +289,25 @@
             document.getElementById('img-preview').style.display = 'none';
             document.getElementById('file-input').value  = '';
             document.getElementById('photo-input').value = '';
+        }
+
+        // ── Structured render (image answers with ## headers) ───────────
+        function renderAnswer(text, container) {
+            container.innerHTML = '';
+            const pre = document.createElement('pre');
+            pre.classList.add('llm-typed');
+            text.split('\n').forEach((line, i, arr) => {
+                if (line.startsWith('## ')) {
+                    const span = document.createElement('span');
+                    span.classList.add('answer-header');
+                    span.textContent = line;
+                    pre.appendChild(span);
+                } else {
+                    pre.appendChild(document.createTextNode(line));
+                }
+                if (i < arr.length - 1) pre.appendChild(document.createTextNode('\n'));
+            });
+            container.appendChild(pre);
         }
 
         // ── Typing effect ───────────────────────────────────────────────
@@ -320,22 +340,26 @@
 
         // ── Send query ──────────────────────────────────────────────────
         async function sendQuery() {
+            if (submitting) return;
             const input      = document.querySelector('.query-input');
             const responseEl = document.getElementById('llm-response');
             const kiwixDiv   = document.getElementById('kiwix-suggest');
             const question   = input.value.trim();
 
             if (!question && !selectedImageFile) return;
+            submitting = true;
 
             if (activeInterval) { clearInterval(activeInterval); activeInterval = null; }
             if (activeCursor)   { activeCursor.remove(); activeCursor = null; }
             if (responseImageUrl) { URL.revokeObjectURL(responseImageUrl); responseImageUrl = null; }
 
             responseEl.innerHTML = '';
+            responseEl.scrollTop = 0;
             kiwixDiv.style.display = 'none';
             input.value = '';
 
             const imageFile = selectedImageFile;
+            let loadingEl;
             if (imageFile) {
                 responseImageUrl = URL.createObjectURL(imageFile);
                 const imgBlock = document.createElement('div');
@@ -344,13 +368,18 @@
                 img.src = responseImageUrl;
                 img.classList.add('response-img');
                 imgBlock.appendChild(img);
+                // Loading sits inside the image block — always visible with the photo
+                loadingEl = document.createElement('div');
+                loadingEl.classList.add('response-processing');
+                loadingEl.textContent = 'processing...';
+                imgBlock.appendChild(loadingEl);
                 responseEl.appendChild(imgBlock);
+            } else {
+                loadingEl = document.createElement('div');
+                loadingEl.classList.add('llm-placeholder');
+                loadingEl.textContent = 'processing...';
+                responseEl.appendChild(loadingEl);
             }
-
-            const loadingEl = document.createElement('div');
-            loadingEl.classList.add('llm-placeholder');
-            loadingEl.textContent = 'processing...';
-            responseEl.appendChild(loadingEl);
 
             try {
                 let answer, kiwixUrl;
@@ -364,6 +393,59 @@
                     const data = await res.json();
                     answer   = data.answer;
                     kiwixUrl = data.kiwix_search_url;
+
+                    // OCR pills — original + translation tabs
+                    loadingEl.remove();
+                    const pillsDiv = document.createElement('div');
+                    pillsDiv.className = 'ocr-pills';
+
+                    const origContent = document.createElement('pre');
+                    origContent.className = 'ocr-pill-content';
+                    origContent.textContent = data.ocr_text || '';
+
+                    const transContent = document.createElement('pre');
+                    transContent.className = 'ocr-pill-content';
+                    transContent.textContent = data.translated_text || '(same as original)';
+
+                    function makeToggle(btn, ownContent, otherContent, otherBtn) {
+                        btn.addEventListener('click', () => {
+                            const opening = !ownContent.classList.contains('open');
+                            ownContent.classList.toggle('open', opening);
+                            btn.classList.toggle('open', opening);
+                            if (opening) {
+                                otherContent.classList.remove('open');
+                                otherBtn.classList.remove('open');
+                            }
+                        });
+                    }
+
+                    const origBtn  = document.createElement('button');
+                    origBtn.className = 'ocr-pill';
+                    origBtn.textContent = `Original · ${data.language || ''}`;
+
+                    const transBtn = document.createElement('button');
+                    transBtn.className = 'ocr-pill';
+                    transBtn.textContent = 'Translation';
+
+                    makeToggle(origBtn,  origContent,  transContent, transBtn);
+                    makeToggle(transBtn, transContent, origContent,  origBtn);
+
+                    pillsDiv.appendChild(origBtn);
+                    pillsDiv.appendChild(transBtn);
+                    responseEl.appendChild(pillsDiv);
+                    responseEl.appendChild(origContent);
+                    responseEl.appendChild(transContent);
+
+                    const answerDiv = document.createElement('div');
+                    responseEl.appendChild(answerDiv);
+                    renderAnswer(answer, answerDiv);
+
+                    if (kiwixUrl) {
+                        document.getElementById('kiwix-link').href = kiwixUrl;
+                        kiwixDiv.style.display = 'block';
+                    }
+                    clearImage();
+                    return;
                 } else {
                     const res  = await fetch(`${CONFIG.RAG_API}/query`, {
                         method: 'POST',
@@ -389,6 +471,8 @@
 
             } catch (err) {
                 loadingEl.textContent = `ERROR: ${err.message}`;
+            } finally {
+                submitting = false;
             }
         }
 

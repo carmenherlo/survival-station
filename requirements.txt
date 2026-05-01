@@ -12,8 +12,9 @@ faiss-cpu==1.13.2
 python-dotenv==1.2.2
 tqdm==4.67.3
 
-# OCR
+# OCR + language detection
 pytesseract==0.3.10
+langdetect==1.0.9
 python-multipart==0.0.20
 opencv-python-headless==4.10.0.84
 numpy<2.0
