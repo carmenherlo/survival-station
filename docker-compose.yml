@@ -53,6 +53,7 @@ services:
   libretranslate:
       image: libretranslate/libretranslate:latest
       container_name: libretranslate
+      user: root
       ports:
         - "5000:5000"
       environment:
@@ -76,6 +77,28 @@ services:
       - ./pwa/nginx-main.conf:/etc/nginx/nginx.conf
       - ./pwa/certs:/etc/nginx/certs:ro
     restart: unless-stopped
-    
+
+  # ===========================================================================
+  # MONITORING STACK — dev profile only, not loaded in production
+  # ===========================================================================
+
+ 
+  # System metrics (CPU, RAM, disk, network)
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
+    restart: unless-stopped
+    profiles: ["monitoring"]
+
 volumes:
   ollama_data:
