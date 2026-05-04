@@ -97,7 +97,7 @@ services:
       - '--path.procfs=/host/proc'
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.mount-points-exclude=^/(sys|proc|dev|host|etc)($$|/)'
-    restart: unless-stopped
+    restart: no
     profiles: ["monitoring"]
 
   # Per-container Docker metrics
@@ -111,7 +111,7 @@ services:
       - /var/run:/var/run:ro
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-    restart: unless-stopped
+    restart: no
     profiles: ["monitoring"]
 
   # Metrics collection and storage
@@ -127,7 +127,7 @@ services:
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.retention.time=7d'
-    restart: unless-stopped
+    restart: no
     profiles: ["monitoring"]
 
   # Visualization dashboard
@@ -144,7 +144,7 @@ services:
       - ./monitoring/grafana/provisioning:/etc/grafana/provisioning
     depends_on:
       - prometheus
-    restart: unless-stopped
+    restart: no
     profiles: ["monitoring"]
 
 volumes:
