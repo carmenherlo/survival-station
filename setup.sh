@@ -41,14 +41,15 @@ err()  { echo -e "${RED}[✘]${RESET} $*" >&2; exit 1; }
 sep()  { echo -e "${BOLD}${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}"; }
 
 # ── Config ────────────────────────────────────────────────────────────────────
-HOTSPOT_SSID="${HOTSPOT_SSID:-Survival-Net}"
-HOTSPOT_PASSWORD="${HOTSPOT_PASSWORD:-survival2026}"   # min 8 chars
+HOTSPOT_SSID="${HOTSPOT_SSID:-TundraNet}"
+HOTSPOT_PASSWORD="${HOTSPOT_PASSWORD:-tundra-2026}"   # min 8 chars
 HOTSPOT_IP="${HOTSPOT_IP:-10.42.0.1}"
 HOTSPOT_IFACE="${HOTSPOT_IFACE:-}"                     # auto-detected if empty
 LAN_IFACE="${LAN_IFACE:-}"                             # auto-detected if empty
 COMPOSE_DIR="${COMPOSE_DIR:-/opt/survival-station}"
 COMPOSE_FILE="${COMPOSE_FILE:-docker-compose.yml}"
-SERVICE_USER="${SUDO_USER:-survival}"
+SERVICE_USER="${SUDO_USER:-tundra}"
+STATION_HOSTNAME="${STATION_HOSTNAME:-tundra}"
 
 # ── Root check ────────────────────────────────────────────────────────────────
 [[ $EUID -ne 0 ]] && err "Run as root:  sudo ./survival-station-setup.sh"
@@ -58,15 +59,23 @@ echo -e "${BOLD}  SURVIVAL STATION — Automated Setup${RESET}"
 echo -e "  SSID: ${YELLOW}${HOTSPOT_SSID}${RESET}  ·  IP: ${YELLOW}${HOTSPOT_IP}${RESET}"
 sep
 
+# ── User password (prompted, never stored) ────────────────────────────────────
+while true; do
+    read -rsp "  Password for user '${SERVICE_USER}': " USER_PASS; echo
+    read -rsp "  Confirm password: " USER_PASS2; echo
+    [[ "$USER_PASS" == "$USER_PASS2" ]] && break
+    warn "Passwords do not match — try again"
+done
+
 # =============================================================================
 # STEP 1 — Hostname + system update + core packages
 # =============================================================================
 sep; info "STEP 1 · Setting hostname"
 
-hostnamectl set-hostname tundra
-echo "tundra" > /etc/hostname
-grep -q "tundra" /etc/hosts || echo "127.0.1.1 tundra" >> /etc/hosts
-log "Hostname set to tundra"
+hostnamectl set-hostname "$STATION_HOSTNAME"
+echo "$STATION_HOSTNAME" > /etc/hostname
+grep -q "$STATION_HOSTNAME" /etc/hosts || echo "127.0.1.1 $STATION_HOSTNAME" >> /etc/hosts
+log "Hostname set to ${STATION_HOSTNAME}"
 
 sep; info "STEP 1 · System update & core packages"
 
@@ -152,6 +161,14 @@ else
 
     log "Docker installed"
 fi
+
+# Create user if it doesn't exist, then set password
+if ! id "$SERVICE_USER" &>/dev/null; then
+    useradd -m -s /bin/bash "$SERVICE_USER"
+    log "User '${SERVICE_USER}' created"
+fi
+echo "${SERVICE_USER}:${USER_PASS}" | chpasswd
+log "Password set for '${SERVICE_USER}'"
 
 # Add service user to docker group
 usermod -aG docker "$SERVICE_USER" 2>/dev/null || true
